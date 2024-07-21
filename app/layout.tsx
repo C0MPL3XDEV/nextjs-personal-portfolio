@@ -3,6 +3,7 @@ import { Space_Grotesk } from "next/font/google"; // Set Custom font
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import React from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] }); // NextFont
 
@@ -43,6 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={spaceGrotesk.className} suppressHydrationWarning>
+      <SpeedInsights />
 
       <ThemeProvider // Set Default Theme ShadcnUI
           attribute="class"
