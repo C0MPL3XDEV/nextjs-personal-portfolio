@@ -6,7 +6,7 @@ import {MovingBorderBtn} from "@/components/ui/moving-border";
 
 export default function HeroSection () {
     return (
-        <div className="min-h-[60vh] flex flex-col-reverse lg:flex-row gap-14 lg:gap-0 items-center justify-between">
+        <div className="min-h-[60vh] flex flex-col-reverse lg:flex-row gap-14 lg:gap-0 items-center justify-between animate-move-up">
             <div className="space-y-10 text-center lg:text-left">
                 <h1 className="text-4xl lg:text-6xl font-bold">
                     Nice to meet you! 👋 <br/>{" "}
@@ -47,7 +47,7 @@ export default function HeroSection () {
                 </div>
                 <div className="absolute bottom-5 sm:bottom-14 left-0 sm:-left-10">
                     <MovingBorderBtn borderRadius="0.5rem" className="p-3 font-semibold">
-                    <p>Download My CV</p>
+                    <a href="/public/Carmine-Giuseppe-Chessa-CV.pdf" download>Download My CV</a>
                     </MovingBorderBtn>
                 </div>
             </div>

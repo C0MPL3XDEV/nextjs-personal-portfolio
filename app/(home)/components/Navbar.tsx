@@ -3,8 +3,9 @@
 import React from 'react';
 import {SiGithub, SiInstagram, SiLinkedin, SiX} from "react-icons/si";
 import Link from "next/link";
+import {cn} from "@/lib/utils";
 
-export default function Navbar() {
+export default function Navbar({className}: {className?: string}) {
     const socialMedias = [
         {
             link: 'https://github.com/C0MPL3XDEV/',
@@ -30,7 +31,7 @@ export default function Navbar() {
 
 
     return (
-      <nav className="py-5 flex justify-between items-center">
+      <nav className={cn("py-5 flex justify-between items-center animate-move-down", className)}>
           <h1 className="text-2xl font-bold underline underline-offset-8 decoration-green-500 -rotate-2">COMPLEXDEV 🧑🏻‍💻</h1>
           <div className="flex items-center gap-5">
               {/* map() -> JS Function used to iterate over all objects in an array
