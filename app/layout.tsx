@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import React from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] }); // NextFont
 
@@ -45,6 +46,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={spaceGrotesk.className} suppressHydrationWarning>
       <SpeedInsights />
+      <Analytics />
 
       <ThemeProvider // Set Default Theme ShadcnUI
           attribute="class"
