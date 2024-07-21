@@ -9,7 +9,7 @@ import { Analytics } from "@vercel/analytics/react"
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] }); // NextFont
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://next-supabase-vote.vercel.app/"),
+    metadataBase: new URL("https://carminedeveloper.vercel.app/"),
 
     title: {
         template: "COMPLEXDEV | DevPortfolio",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
             "Based in 🇮🇹, I'm CS Student studying to become a " +
             "Full Stack Developer, with passion for developing web application " +
             "and desktop application that users love ",
-        url: "https://next-supabase-vote.vercel.app/",
+        url: "https://carminedeveloper.vercel.app/",
         siteName: "COMPLEXDEV | DevPortfolio",
         images: "/portfolio-img.png",
         type: "website",
