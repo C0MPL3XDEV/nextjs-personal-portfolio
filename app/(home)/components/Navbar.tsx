@@ -13,7 +13,7 @@ export default function Navbar({className}: {className?: string}) {
             icon: SiGithub,
         },
         {
-            link: 'https://linkedin.com/in/carmine-giuseppe-chessa/',
+            link: 'https://www.linkedin.com/in/carmine-giuseppe-chessa-018750261/',
             label: "LinkedIn",
             icon: SiLinkedin,
         },

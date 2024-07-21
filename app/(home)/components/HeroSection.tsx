@@ -47,7 +47,7 @@ export default function HeroSection () {
                 </div>
                 <div className="absolute bottom-5 sm:bottom-14 left-0 sm:-left-10">
                     <MovingBorderBtn borderRadius="0.5rem" className="p-3 font-semibold">
-                    <a href="/public/Carmine-Giuseppe-Chessa-CV.pdf" download>Download My CV</a>
+                    <a href="/Carmine-Giuseppe-Chessa-CV.pdf" download>Download My CV</a>
                     </MovingBorderBtn>
                 </div>
             </div>
