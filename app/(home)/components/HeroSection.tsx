@@ -1,10 +1,24 @@
 "use client";
 
-import react from 'react';
+import react, {useState} from 'react';
 import Link from "next/link";
 import {MovingBorderBtn} from "@/components/ui/moving-border";
+import Errormsg from "@/app/(home)/components/Errormsg";
 
 export default function HeroSection () {
+    const [cvLink] = useState('');
+    const [error, setError] = useState(false);
+
+    const handleDownload = (e: { preventDefault: () => void; }) => {
+        if (!cvLink) {
+            e.preventDefault();
+            setError(true);
+            setTimeout(() => setError(false), 5000);
+        } else {
+            setError(false);
+        }
+    };
+
     return (
         <div className="min-h-[60vh] flex flex-col-reverse lg:flex-row gap-14 lg:gap-0 items-center justify-between animate-move-up">
             <div className="space-y-10 text-center lg:text-left">
@@ -47,8 +61,9 @@ export default function HeroSection () {
                 </div>
                 <div className="absolute bottom-5 sm:bottom-14 left-0 sm:-left-10">
                     <MovingBorderBtn borderRadius="0.5rem" className="p-3 font-semibold">
-                    <a href="/Carmine-Giuseppe-Chessa-CV.pdf" download>Download My CV</a>
+                    <a href={cvLink} onClick={handleDownload}>Download My CV</a>
                     </MovingBorderBtn>
+                    {error && <Errormsg />}
                 </div>
             </div>
         </div>
