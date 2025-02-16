@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button"
 export default function Errormsg() {
     return <AlertDialog>
         <AlertDialogTrigger>
-            <Button className="text-red-500">Error occurred :( pls Open</Button>
+            <Button className="text-red-500">Error occurred :( Open Me!</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
             <AlertDialogHeader>

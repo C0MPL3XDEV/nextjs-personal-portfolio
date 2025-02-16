@@ -3,18 +3,17 @@
 import React from 'react';
 import Title from "@/app/(home)/components/Title";
 import {HoverEffect} from "@/components/ui/card-hover-effect";
-import { TbBrandCpp, TbBrandMysql, TbBrandJavascript, TbBrandHtml5, TbBrandCss3, TbBrandPython, TbBrandFirebase, TbBrandNextjs } from "react-icons/tb";
+import { TbBrandCpp, TbBrandMysql, TbBrandJavascript, TbBrandHtml5, TbBrandCss3, TbBrandPython, TbBrandFirebase, TbBrandNextjs, TbBrandAngular } from "react-icons/tb";
+
 import { LiaJava } from "react-icons/lia";
-import { SiPhp, SiLinuxprofessionalinstitute } from "react-icons/si";
+import { SiPhp, SiLinuxprofessionalinstitute, SiTypescript, SiElastic } from "react-icons/si";
 import { FaVuejs } from "react-icons/fa";
+import { FaLaravel, FaDocker } from "react-icons/fa";
+import { title } from 'process';
 
 export default function Skills() {
 
     const skills = [
-        {
-            title: "C++",
-            Icon: TbBrandCpp
-        },
         {
             title: "Java",
             Icon: LiaJava,
@@ -22,6 +21,10 @@ export default function Skills() {
         {
             title: "PHP",
             Icon: SiPhp,
+        },
+        {
+            title: "Laravel",
+            Icon: FaLaravel, 
         },
         {
             title: "MySQL",
@@ -32,12 +35,29 @@ export default function Skills() {
             Icon: TbBrandJavascript,
         },
         {
+            title: "TypeScript",
+            Icon: SiTypescript,
+            
+        },
+        {
             title: "HTML5",
             Icon: TbBrandHtml5,
         },
         {
             title: "CSS3",
             Icon: TbBrandCss3,
+        },
+        {
+            title: "Angular",
+            Icon: TbBrandAngular,
+        },
+        {
+            title: "Docker",
+            Icon: FaDocker,
+        },
+        {
+            title: "Elastic",
+            Icon: SiElastic,
         },
         {
             title: "Python",
@@ -54,10 +74,6 @@ export default function Skills() {
         {
             title: "Linux",
             Icon: SiLinuxprofessionalinstitute,
-        },
-        {
-            title: "Vue.js",
-            Icon: FaVuejs,
         }
     ];
 

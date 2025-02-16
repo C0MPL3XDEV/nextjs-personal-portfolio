@@ -13,7 +13,6 @@ export default function HeroSection () {
         if (!cvLink) {
             e.preventDefault();
             setError(true);
-            setTimeout(() => setError(false), 5000);
         } else {
             setError(false);
         }
