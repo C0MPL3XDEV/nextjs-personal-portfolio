@@ -9,14 +9,14 @@ import { Analytics } from "@vercel/analytics/react"
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] }); // NextFont
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://carminedeveloper.vercel.app/"),
+    metadataBase: new URL("https://carminedev.it/"),
 
     title: {
-        template: "COMPLEXDEV | DevPortfolio",
-        default: "COMPLEXDEV | DevPortfolio",
+        template: "carmine.dev | Dev Portfolio",
+        default: "carmine.dev | Dev Portfolio",
     },
     authors: {
-        name: "Carmine G.",
+        name: "carmine.dev",
     },
 
     description:
@@ -24,17 +24,17 @@ export const metadata: Metadata = {
         "Full Stack Developer, with passion for developing web application " +
         "and desktop application that users love ",
     openGraph: {
-        title: "COMPLEXDEV | DevPortfolio",
+        title: "carmine.dev | Dev Portfolio",
         description:
             "Based in 🇮🇹, I'm CS Student studying to become a " +
             "Full Stack Developer, with passion for developing web application " +
             "and desktop application that users love ",
-        url: "https://carminedeveloper.vercel.app/",
-        siteName: "COMPLEXDEV | DevPortfolio",
+        url: "https://carminedev.it/",
+        siteName: "carmine.dev | Dev Portfolio",
         images: "/portfolio-img.png",
         type: "website",
     },
-    keywords: ["complexdev", "carmine giuseppe chessa", "E4GL3OS1NT", "C0MPL3XDEV", "carmine.developer"],
+    keywords: ["carmine.dev", "carminedev.it", "complexdev", "carmine giuseppe chessa", "E4GL3OS1NT", "C0MPL3XDEV", "carmine.developer"],
 };
 
 export default function RootLayout({
