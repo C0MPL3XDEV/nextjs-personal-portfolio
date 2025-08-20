@@ -3,13 +3,20 @@
 import React from 'react';
 import Title from "@/app/(home)/components/Title";
 import {HoverEffect} from "@/components/ui/card-hover-effect";
-import { TbBrandCpp, TbBrandMysql, TbBrandJavascript, TbBrandHtml5, TbBrandCss3, TbBrandPython, TbBrandFirebase, TbBrandNextjs, TbBrandAngular } from "react-icons/tb";
+import {
+    TbBrandMysql,
+    TbBrandJavascript,
+    TbBrandHtml5,
+    TbBrandCss3,
+    TbBrandPython,
+    TbBrandFirebase,
+    TbBrandNextjs,
+    TbBrandAngular
+} from "react-icons/tb";
 
 import { LiaJava } from "react-icons/lia";
 import { SiPhp, SiLinuxprofessionalinstitute, SiTypescript, SiElastic } from "react-icons/si";
-import { FaVuejs } from "react-icons/fa";
 import { FaLaravel, FaDocker } from "react-icons/fa";
-import { title } from 'process';
 
 export default function Skills() {
 
@@ -78,7 +85,7 @@ export default function Skills() {
     ];
 
     return (
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-6xl mx-auto px-8">
             <Title title={"Skills 🔪"} className="flex flex-col items-center justify-center -rotate-6" />
             <HoverEffect items={skills} ></HoverEffect>
         </div>
