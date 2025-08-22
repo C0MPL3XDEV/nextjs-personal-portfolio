@@ -4,8 +4,9 @@ import react, {useState} from 'react';
 import Link from "next/link";
 import {MovingBorderBtn} from "@/components/ui/moving-border";
 import Errormsg from "@/app/(home)/components/Errormsg";
+import TimeLeftUpdateChip from "@/app/(home)/components/TimeLeftUpdate";
 
-export default function HeroSection () {
+export default function HeroSection() {
     const [cvLink] = useState('');
     const [error, setError] = useState(false);
 
@@ -19,8 +20,10 @@ export default function HeroSection () {
     };
 
     return (
-        <div className="min-h-[60vh] flex flex-col-reverse lg:flex-row gap-14 lg:gap-0 items-center justify-between animate-move-up">
+        <div
+            className="min-h-[60vh] flex flex-col-reverse lg:flex-row gap-14 lg:gap-0 items-center justify-between animate-move-up">
             <div className="space-y-10 text-center lg:text-left">
+                <TimeLeftUpdateChip/>
                 <h1 className="text-4xl lg:text-6xl font-bold">
                     Nice to meet you! 👋 <br/>{" "}
                     <span className="underline underline-offset-8 decoration-green-500">{"I'm COMPLEXDEV"}</span>
@@ -36,7 +39,8 @@ export default function HeroSection () {
                     <div>
                         <h1 className="text-3xl font-bold group-hover:text-green-400 transition-all">Connect Me 📭</h1>
                         <div className="w-40 h-2 bg-green-500 rounded-full hover:translate-x-4 transition-all"></div>
-                        <div className="w-40 h-2 bg-indigo-500 rounded-full translate-x-2 hover:translate-x-4 transition-all"></div>
+                        <div
+                            className="w-40 h-2 bg-indigo-500 rounded-full translate-x-2 hover:translate-x-4 transition-all"></div>
                     </div>
                 </Link>
             </div>
@@ -60,9 +64,9 @@ export default function HeroSection () {
                 </div>
                 <div className="absolute bottom-5 sm:bottom-14 left-0 sm:-left-10">
                     <MovingBorderBtn borderRadius="0.5rem" className="p-3 font-semibold">
-                    <a href={cvLink} onClick={handleDownload}>Download My CV</a>
+                        <a href={cvLink} onClick={handleDownload}>Download My CV</a>
                     </MovingBorderBtn>
-                    {error && <Errormsg />}
+                    {error && <Errormsg/>}
                 </div>
             </div>
         </div>
