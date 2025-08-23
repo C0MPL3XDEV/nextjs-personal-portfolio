@@ -3,9 +3,7 @@
 import {useEffect, useState} from "react";
 
 export default function TimeLeftUpdateChip() {
-    const targetDate = new Date();
-
-    targetDate.setDate(targetDate.getDate() + 7);
+    const targetDate = new Date("2025-08-30T12:00:00");
 
     const [timeLeft, setTimeLeft] = useState("");
 
