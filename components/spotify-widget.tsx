@@ -73,23 +73,45 @@ export function SpotifyWidget() {
                     target="_blank"
                     className="group relative flex items-center gap-3 p-3 pr-4 rounded-2xl bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 backdrop-blur-md transition-all duration-300 w-fit cursor-pointer"
                 >
-                    {/* Album Art */}
-                    <div className="relative w-10 h-10 rounded-md overflow-hidden shadow-sm flex-shrink-0">
+                    {/* Album Art (vinyl) */}
+                    <div className="relative w-10 h-10 rounded-full overflow-hidden shadow-sm flex-shrink-0">
                         {data.albumImageUrl ? (
-                            <NextImage
-                                src={data.albumImageUrl}
-                                alt={data.album}
-                                fill
-                                className={cn("object-cover", data.isPlaying && "animate-[spin_10s_linear_infinite]")}
-                                unoptimized
-                            />
+                            <>
+                                {/* Rotating disc */}
+                                <div className={cn("absolute inset-0", data.isPlaying && "animate-[spin_6s_linear_infinite]")}>
+                                    <NextImage
+                                        src={data.albumImageUrl}
+                                        alt={data.album}
+                                        fill
+                                        sizes="40px"
+                                        className="object-cover rounded-full"
+                                        unoptimized
+                                    />
+                                </div>
+
+                                {/* Vinyl grooves overlay */}
+                                <div className="pointer-events-none absolute inset-0 rounded-full
+                                    bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.18)_0px,rgba(255,255,255,0.10)_2px,transparent_3px),
+                                        radial-gradient(circle_at_center,transparent_0px,transparent_9px,rgba(255,255,255,0.10)_10px,transparent_11px),
+                                        radial-gradient(circle_at_center,transparent_0px,transparent_14px,rgba(255,255,255,0.08)_15px,transparent_16px),
+                                        radial-gradient(circle_at_center,transparent_0px,transparent_18px,rgba(255,255,255,0.06)_19px,transparent_20px)]
+                                    opacity-70"
+                                />
+
+                                {/* Outer subtle ring */}
+                                <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-white/15" />
+
+                                {/* Center label + hole */}
+                                <div className="pointer-events-none absolute inset-0 grid place-items-center">
+                                    <div className="w-3.5 h-3.5 rounded-full bg-black/55 backdrop-blur-sm ring-1 ring-white/20" />
+                                    <div className="absolute w-1 h-1 rounded-full bg-black/80" />
+                                </div>
+                            </>
                         ) : (
-                            <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
+                            <div className="w-full h-full bg-zinc-800 flex items-center justify-center rounded-full">
                                 <SiSpotify className="w-5 h-5 text-green-500" />
                             </div>
                         )}
-                        {/* Center dot for vinyl effect if playing */}
-                        {data.isPlaying && <div className="absolute inset-0 m-auto w-2 h-2 bg-black/50 rounded-full backdrop-blur-sm border border-white/20" />}
                     </div>
 
                     {/* Metadata */}

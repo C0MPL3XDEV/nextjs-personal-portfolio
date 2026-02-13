@@ -1,63 +1,57 @@
+import { NextResponse } from "next/server";
+import { getNowPlaying, getRecentlyPlayed } from "@/lib/spotify"; // adatta path
 
-import { getNowPlaying, getRecentlyPlayed } from '@/lib/spotify';
-import { NextResponse } from 'next/server';
+export const revalidate = 30;
 
-export const dynamic = 'force-dynamic';
+function mapTrack(track: any) {
+    return {
+        title: track?.name ?? "",
+        artist: track?.artists?.map((a: any) => a.name).join(", ") ?? "",
+        album: track?.album?.name ?? "",
+        albumImageUrl: track?.album?.images?.[0]?.url ?? "",
+        songUrl: track?.external_urls?.spotify ?? "",
+    };
+}
 
 export async function GET() {
     try {
-        const response = await getNowPlaying();
+        const nowRes = await getNowPlaying();
 
-        if (response.status === 204 || response.status > 400) {
-            // Not playing or error, fall back to recently played
-            const recentResponse = await getRecentlyPlayed();
-            const recentData = await recentResponse.json();
-
-            if (!recentData || !recentData.items || recentData.items.length === 0) {
-                return NextResponse.json({ isPlaying: false });
+        if (nowRes.status === 204 || nowRes.status > 400) {
+            // 2) fallback: Recently Played
+            const recentRes = await getRecentlyPlayed();
+            if (!recentRes.ok) {
+                return NextResponse.json(null, { status: 200 });
             }
 
-            const track = recentData.items[0].track;
-            const title = track.name;
-            const artist = track.artists.map((_artist: any) => _artist.name).join(', ');
-            const album = track.album.name;
-            const albumImageUrl = track.album.images[0].url;
-            const songUrl = track.external_urls.spotify;
+            const recent = await recentRes.json();
+            const item = recent?.items?.[0];
+            const track = item?.track;
+
+            if (!track) return NextResponse.json(null, { status: 200 });
 
             return NextResponse.json({
                 isPlaying: false,
-                title,
-                artist,
-                album,
-                albumImageUrl,
-                songUrl,
-                lastPlayed: true // Marker for UI
+                lastPlayed: true,
+                ...mapTrack(track),
             });
         }
 
-        const song = await response.json();
-
-        if (song.item === null) {
-            return NextResponse.json({ isPlaying: false });
+        if (!nowRes.ok) {
+            return NextResponse.json(null, { status: 200 });
         }
 
-        const isPlaying = song.is_playing;
-        const title = song.item.name;
-        const artist = song.item.artists.map((_artist: any) => _artist.name).join(', ');
-        const album = song.item.album.name;
-        const albumImageUrl = song.item.album.images[0].url;
-        const songUrl = song.item.external_urls.spotify;
+        const now = await nowRes.json();
+        const track = now?.item;
+
+        if (!track) return NextResponse.json(null, { status: 200 });
 
         return NextResponse.json({
-            isPlaying,
-            title,
-            artist,
-            album,
-            albumImageUrl,
-            songUrl,
+            isPlaying: Boolean(now?.is_playing),
+            lastPlayed: false,
+            ...mapTrack(track),
         });
-    } catch (error) {
-        console.error('Error fetching Spotify data', error);
-        return NextResponse.json({ isPlaying: false }, { status: 500 });
+    } catch (e) {
+        return NextResponse.json(null, { status: 200 });
     }
 }
