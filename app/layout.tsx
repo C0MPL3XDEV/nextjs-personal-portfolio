@@ -1,40 +1,26 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google"; // Set Custom font
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import React from "react";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/react"
+import { siteConfig } from "@/lib/site-config";
+import { cn } from "@/lib/utils";
 
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] }); // NextFont
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://carminedeveloper.vercel.app/"),
-
-    title: {
-        template: "COMPLEXDEV | DevPortfolio",
-        default: "COMPLEXDEV | DevPortfolio",
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: ["Next.js", "React", "TailwindCSS", "Portfolio", "Full Stack Developer"],
+  authors: [
+    {
+      name: siteConfig.name,
+      url: siteConfig.links.github,
     },
-    authors: {
-        name: "Carmine G.",
-    },
-
-    description:
-        "Based in 🇮🇹, I'm CS Student studying to become a " +
-        "Full Stack Developer, with passion for developing web application " +
-        "and desktop application that users love ",
-    openGraph: {
-        title: "COMPLEXDEV | DevPortfolio",
-        description:
-            "Based in 🇮🇹, I'm CS Student studying to become a " +
-            "Full Stack Developer, with passion for developing web application " +
-            "and desktop application that users love ",
-        url: "https://carminedeveloper.vercel.app/",
-        siteName: "COMPLEXDEV | DevPortfolio",
-        images: "/portfolio-img.png",
-        type: "website",
-    },
-    keywords: ["complexdev", "carmine giuseppe chessa", "E4GL3OS1NT", "C0MPL3XDEV", "carmine.developer"],
+  ],
+  creator: siteConfig.name,
 };
 
 export default function RootLayout({
@@ -43,20 +29,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={spaceGrotesk.className} suppressHydrationWarning>
-      <SpeedInsights />
-      <Analytics />
-
-      <ThemeProvider // Set Default Theme ShadcnUI
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn("min-h-screen bg-background font-sans antialiased", inter.variable)}>
+        <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
-      >
+        >
           {children}
-      </ThemeProvider>
-
+        </ThemeProvider>
       </body>
     </html>
   );
