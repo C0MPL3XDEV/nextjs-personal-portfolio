@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
+import {SpotifyWidget} from "@/components/spotify-widget";
 
 export default function HeroSection() {
 
@@ -61,6 +62,22 @@ export default function HeroSection() {
                     I&apos;m a <strong>Software Technologies student</strong> and <strong>Junior Full Stack Developer</strong> with ~2 years of experience.
                     I build secure, scalable web applications with a focus on architecture, fueled by <strong>music</strong> and creativity.
                 </motion.p>
+
+                <motion.div
+                    variants={child}
+                    className="mt-4 w-full max-w-[520px]"
+                >
+                    <div className="flex flex-col items-start gap-2">
+                        <motion.span
+                            variants={child}
+                            className="text-[11px] text-muted-foreground uppercase tracking-wider"
+                        >
+                            Currently listening
+                        </motion.span>
+
+                        <SpotifyWidget compact />
+                    </div>
+                </motion.div>
 
                 <motion.div variants={child} className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-4">
                     <Link href="#contact" scroll={true}>

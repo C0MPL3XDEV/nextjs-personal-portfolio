@@ -19,7 +19,7 @@ interface SpotifyData {
     lastPlayed?: boolean;
 }
 
-export function SpotifyWidget() {
+export function SpotifyWidget({ compact = false }: { compact?: boolean }) {
     const [data, setData] = useState<SpotifyData | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -71,7 +71,10 @@ export function SpotifyWidget() {
                 <Link
                     href={data.songUrl || "#"}
                     target="_blank"
-                    className="group relative flex items-center gap-3 p-3 pr-4 rounded-2xl bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 backdrop-blur-md transition-all duration-300 w-fit cursor-pointer"
+                    className={cn(
+                        "group relative flex items-center gap-3 p-3 pr-4 rounded-2xl bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 backdrop-blur-md transition-all duration-300 cursor-pointer",
+                        compact ? "w-fit max-w-[320px]" : "w-full sm:w-fit"
+                    )}
                 >
                     {/* Album Art (vinyl) */}
                     <div className="relative w-10 h-10 rounded-full overflow-hidden shadow-sm flex-shrink-0">
@@ -115,7 +118,10 @@ export function SpotifyWidget() {
                     </div>
 
                     {/* Metadata */}
-                    <div className="flex flex-col gap-0.5 min-w-[100px] max-w-[200px]">
+                    <div className={cn(
+                        "flex flex-col gap-0.5 min-w-0",
+                        compact ? "max-w-[200px]" : "max-w-full sm:max-w-[220px]"
+                    )}>
                         <div className="flex items-center gap-2">
                             <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
                                 {data.isPlaying ? (
