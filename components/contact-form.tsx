@@ -42,12 +42,17 @@ export function ContactForm() {
         },
     });
 
-    const onSubmit = async (data: FormValues) => {
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault(); // Prevent default form submission (no page reload)
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+
         // Honeypot check
-        if (data.companyWebsite) {
+        if (formData.get('companyWebsite')) {
             // If honeypot is filled, simulate success but do nothing
             setStatus("success");
-            reset();
+            form.reset();
             return;
         }
 
@@ -55,18 +60,18 @@ export function ContactForm() {
         setErrorMessage("");
 
         try {
-            const response = await fetch(siteConfig.contact.formspreeEndpoint, {
-                method: "POST",
+            // Submit as FormData (not JSON) to allow Formspree's reCAPTCHA to work
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData, // Send FormData instead of JSON
                 headers: {
-                    "Content-Type": "application/json",
                     "Accept": "application/json",
                 },
-                body: JSON.stringify(data),
             });
 
             if (response.ok) {
                 setStatus("success");
-                reset();
+                form.reset();
             } else {
                 const errorData = await response.json();
                 if (Object.hasOwn(errorData, 'errors')) {
@@ -109,7 +114,12 @@ export function ContactForm() {
                     </button>
                 </motion.div>
             ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form
+                    action={siteConfig.contact.formspreeEndpoint}
+                    method="POST"
+                    onSubmit={onSubmit}
+                    className="space-y-6"
+                >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* First Name */}
                         <div className="space-y-2">
@@ -218,7 +228,12 @@ export function ContactForm() {
 
                     {/* Honeypot field (hidden) */}
                     <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
-                        <input type="text" tabIndex={-1} autoComplete="off" {...register("companyWebsite")} />
+                        <input
+                            type="text"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            {...register("companyWebsite")}
+                        />
                     </div>
 
                     {/* Error Message */}
