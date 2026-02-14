@@ -15,6 +15,15 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
 
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+
+  manifest: "/site.webmanifest",
+
   description: siteConfig.description,
 
   applicationName: siteConfig.name,
@@ -66,7 +75,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: "/og-image.png",
+        url: "/op-image.png",
         alt: `${siteConfig.name} - Portfolio`,
         width: 1200,
         height: 630,
@@ -79,7 +88,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     creator: "@COMPLEXDEV2",
-    images: ["/og-image.png"],
+    images: ["/op-image.png"],
   }
 };
 
