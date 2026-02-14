@@ -67,15 +67,17 @@ export default function HeroSection() {
                     variants={child}
                     className="mt-4 w-full max-w-[520px]"
                 >
-                    <div className="flex flex-col items-start gap-2">
+                    <div className="flex flex-col items-center gap-2 md:items-start">
                         <motion.span
                             variants={child}
-                            className="text-[11px] text-muted-foreground uppercase tracking-wider"
+                            className="text-[11px] text-muted-foreground uppercase tracking-wider text-center md:text-left"
                         >
                             Currently listening
                         </motion.span>
 
-                        <SpotifyWidget compact />
+                        <div className="flex justify-center md:justify-start w-full">
+                            <SpotifyWidget compact />
+                        </div>
                     </div>
                 </motion.div>
 
