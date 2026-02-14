@@ -1,38 +1,72 @@
-# nextjs-personal-portfolio
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Contact Form
 
-First, run the development server:
+The contact form uses [Formspree](https://formspree.io) for submissions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Configuration
+
+The Formspree endpoint is configured in `lib/site-config.ts`:
+
+```typescript
+export const siteConfig = {
+  // ...
+  contact: {
+    formspreeEndpoint: "https://formspree.io/f/YOUR_FORM_ID", // Currently set to mnjbqbwp
+  },
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### reCAPTCHA
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+If you have enabled reCAPTCHA in your Formspree dashboard, the form should work automatically. 
+If Formspree requires a client-side token in the future, you may need to integrate the `react-google-recaptcha` library and include `g-recaptcha-response` in the payload. 
+Currently, it uses standard AJAX submission.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Honeypot
 
-## Learn More
+A hidden field `companyWebsite` is included to prevent spam bot submissions.
 
-To learn more about Next.js, take a look at the following resources:
+## Spotify Integration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The footer includes a "Now Playing" widget powered by the Spotify Web API.
+To enable it, you need to set up a Spotify App in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/applications) and authorize your account to get a Refresh Token.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Add the following to your `.env` or `.env.local`:
 
-## Deploy on Vercel
+```
+SPOTIFY_CLIENT_ID=your_client_id
+SPOTIFY_CLIENT_SECRET=your_client_secret
+SPOTIFY_REFRESH_TOKEN=your_refresh_token
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To get the refresh token:
+1. Creating an app in Spotify Dashboard.
+2. Add `http://localhost:3000` to Redirect URIs.
+3. authorize your user with `user-read-currently-playing` and `user-read-recently-played` scopes.
+4. Exchange the code for a refresh token.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Running tests
 
+This project includes a comprehensive testing suite ensuring code quality and stability.
+
+### Prerequisites
+
+- Node.js installed
+- Dependencies installed via `npm install`
+- For Playwright (E2E), you may need to install browsers: `npx playwright install`
+
+### Commands
+
+| Type | Command | Description |
+|------|---------|-------------|
+| **Type Check** | `npm run typecheck` | logical verification of TypeScript types |
+| **Unit Tests** | `npm run test` | Runs Jest unit tests |
+| **Watch Mode** | `npm run test:watch` | Runs Jest in watch mode |
+| **E2E Tests** | `npm run test:e2e` | Runs Playwright end-to-end tests |
+| **E2E UI** | `npm run test:e2e:ui` | Opens Playwright UI runner |
+| **Full Suite** | `npm run test:all` | Runs lint, typecheck, unit, and E2E tests |
+
+### Notes
+
+- Playwright tests run in headless mode by default. Use `npm run test:e2e:headed` to see the browser.
+- Tests are designed to be CI-friendly.

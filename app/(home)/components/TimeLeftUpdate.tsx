@@ -1,6 +1,6 @@
 "use client"
 
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export default function TimeLeftUpdateChip() {
     const targetDate = new Date("2025-08-30T12:00:00");

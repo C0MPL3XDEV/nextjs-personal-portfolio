@@ -1,24 +1,48 @@
+
 import React from 'react'
-import Navbar from "@/app/(home)/components/Navbar";
+import { Navbar } from "@/components/navbar";
 import HeroSection from "@/app/(home)/components/HeroSection";
 import Skills from "@/app/(home)/components/Skills";
-import Projects from "@/app/(home)/components/Projects";
-import Footer from "@/app/(home)/components/Footer";
+import { Experience } from "@/components/experience";
+import { Projects } from "@/components/projects";
+import { ContactForm } from "@/components/contact-form";
+import { Footer } from "@/components/footer";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { Section } from '@/components/ui/section';
 
-export default function page () {
-    return <div className="min-h-screen bg-black overflow-hidden">
-        <div className="dark:bg-black bg-white dark:bg-grid-white/[0.06] bg-grid-black/[0.2] relative">
-            <div className="max-w-7xl mx-auto p-5">
-                <Navbar />
+export default function page() {
+    return <div className="min-h-screen bg-background overflow-hidden selection:bg-indigo-500 selection:text-white">
+        <div className="dark:bg-grid-white/[0.05] bg-grid-black/[0.05] relative pb-20">
+
+            <Navbar />
+
+            <Section id="home" className="pt-32 md:pt-48">
                 <HeroSection />
-            </div>
-            <div className="h-10 xl:h-32 bg-gradient-to-t from-black absolute -bottom-5 left-0 xl:bottom-0 w-full">
-            </div>
-            <div className="max-w-7xl mx-auto p-5 mt-20 ">
+            </Section>
+
+            <Section id="skills">
                 <Skills />
+            </Section>
+
+            <Section id="experience">
+                <Experience />
+            </Section>
+
+            <Section id="projects" className="pb-32">
                 <Projects />
-                <Footer />
-            </div>
+            </Section>
+
+
+
+            <Section id="contact" className="pt-10 pb-20">
+                <SectionHeading
+                    title="Contact"
+                    subtitle="Have a project in mind? Let’s build something awesome together."
+                />
+                <ContactForm />
+            </Section>
+
+            <Footer />
         </div>
     </div>
 }

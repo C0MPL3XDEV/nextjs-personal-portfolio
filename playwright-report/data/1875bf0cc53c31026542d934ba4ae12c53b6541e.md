@@ -1,0 +1,242 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - link "C0MPL3XDEV" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: C0MPL3XDEV
+      - button "Toggle menu" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e14]: Available for work
+        - heading "Building digital experiences that matter." [level=1] [ref=e18]:
+          - generic [ref=e19]: Building digital
+          - generic [ref=e20]: experiences
+          - generic [ref=e21]: that matter.
+        - paragraph [ref=e22]:
+          - text: I'm a
+          - strong [ref=e23]: Software Technologies student
+          - text: and
+          - strong [ref=e24]: Junior Full Stack Developer
+          - text: with ~2 years of experience. I build secure, scalable web applications with a focus on architecture, fueled by
+          - strong [ref=e25]: music
+          - text: and creativity.
+        - generic [ref=e26]:
+          - link "Contact Me" [ref=e27] [cursor=pointer]:
+            - /url: "#contact"
+            - button "Contact Me" [ref=e28]:
+              - text: Contact Me
+              - img [ref=e29]
+          - link "Download CV" [ref=e31] [cursor=pointer]:
+            - /url: /cv.pdf
+            - button "Download CV" [ref=e32]:
+              - text: Download CV
+              - img [ref=e33]
+      - generic [ref=e41]: < Code / >
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - heading "Skills" [level=2] [ref=e45]
+        - paragraph [ref=e46]: The technologies I use to build digital products.
+      - generic [ref=e48]:
+        - generic [ref=e51] [cursor=pointer]:
+          - img [ref=e52]
+          - paragraph [ref=e54]: Java
+        - generic [ref=e57] [cursor=pointer]:
+          - img [ref=e58]
+          - paragraph [ref=e60]: PHP
+        - generic [ref=e63] [cursor=pointer]:
+          - img [ref=e64]
+          - paragraph [ref=e66]: Laravel
+        - generic [ref=e69] [cursor=pointer]:
+          - img [ref=e70]
+          - paragraph [ref=e72]: MySQL
+        - generic [ref=e75] [cursor=pointer]:
+          - img [ref=e76]
+          - paragraph [ref=e80]: Javascript
+        - generic [ref=e83] [cursor=pointer]:
+          - img [ref=e84]
+          - paragraph [ref=e86]: TypeScript
+        - generic [ref=e89] [cursor=pointer]:
+          - img [ref=e90]
+          - paragraph [ref=e93]: HTML5
+        - generic [ref=e96] [cursor=pointer]:
+          - img [ref=e97]
+          - paragraph [ref=e100]: CSS3
+        - generic [ref=e103] [cursor=pointer]:
+          - img [ref=e104]
+          - paragraph [ref=e107]: Angular
+        - generic [ref=e110] [cursor=pointer]:
+          - img [ref=e111]
+          - paragraph [ref=e113]: Docker
+        - generic [ref=e116] [cursor=pointer]:
+          - img [ref=e117]
+          - paragraph [ref=e119]: Elastic
+        - generic [ref=e122] [cursor=pointer]:
+          - img [ref=e123]
+          - paragraph [ref=e127]: Python
+        - generic [ref=e130] [cursor=pointer]:
+          - img [ref=e131]
+          - paragraph [ref=e135]: Firebase
+        - generic [ref=e138] [cursor=pointer]:
+          - img [ref=e139]
+          - paragraph [ref=e141]: Next.js
+        - generic [ref=e144] [cursor=pointer]:
+          - img [ref=e145]
+          - paragraph [ref=e147]: Linux
+    - generic [ref=e149]:
+      - generic [ref=e150]:
+        - heading "Experience" [level=2] [ref=e151]
+        - paragraph [ref=e152]: My professional journey and education.
+      - generic [ref=e154]:
+        - generic [ref=e158]:
+          - generic [ref=e159]:
+            - generic [ref=e160]: Full Stack Developer
+            - time [ref=e161]: 2024 - Present
+          - generic [ref=e162]: Freelance
+          - paragraph [ref=e163]: Developing modern web applications using Next.js, React, and TailwindCSS. Building custom solutions for clients defined by performance and aesthetics.
+        - generic [ref=e167]:
+          - generic [ref=e168]:
+            - generic [ref=e169]: Computer Science Student
+            - time [ref=e170]: 2023 - Present
+          - generic [ref=e171]: University
+          - paragraph [ref=e172]: Studying fundamental computer science concepts, algorithms, and software engineering principles.
+        - generic [ref=e176]:
+          - generic [ref=e177]:
+            - generic [ref=e178]: Open Source Contributor
+            - time [ref=e179]: 2022 - Present
+          - generic [ref=e180]: GitHub / Community
+          - paragraph [ref=e181]: Contributing to various open source projects and building personal tools to share with the developer community.
+    - generic [ref=e183]:
+      - generic [ref=e184]:
+        - heading "Projects" [level=2] [ref=e185]
+        - paragraph [ref=e186]: Recent open source contributions and personal projects.
+      - generic [ref=e188]:
+        - link "nextjs-personal-portfolio My Portfolio website written with Next.js, Aceternity UI and shadcn/ui TypeScript" [ref=e189] [cursor=pointer]:
+          - /url: https://github.com/C0MPL3XDEV/nextjs-personal-portfolio
+          - generic [ref=e191]:
+            - generic [ref=e192]:
+              - heading "nextjs-personal-portfolio" [level=3] [ref=e193]
+              - img [ref=e194]
+            - paragraph [ref=e196]: My Portfolio website written with Next.js, Aceternity UI and shadcn/ui
+            - generic [ref=e198]: TypeScript
+        - link "build-your-own-x Master programming by recreating your favorite technologies from scratch." [ref=e199] [cursor=pointer]:
+          - /url: https://github.com/C0MPL3XDEV/build-your-own-x
+          - generic [ref=e201]:
+            - generic [ref=e202]:
+              - heading "build-your-own-x" [level=3] [ref=e203]
+              - img [ref=e204]
+            - paragraph [ref=e206]: Master programming by recreating your favorite technologies from scratch.
+        - link "awesome 😎 Awesome lists about all kinds of interesting topics" [ref=e207] [cursor=pointer]:
+          - /url: https://github.com/C0MPL3XDEV/awesome
+          - generic [ref=e209]:
+            - generic [ref=e210]:
+              - heading "awesome" [level=3] [ref=e211]
+              - img [ref=e212]
+            - paragraph [ref=e214]: 😎 Awesome lists about all kinds of interesting topics
+        - link "n8n-workflows all of the workflows of n8n i could find (also from the site itself)" [ref=e215] [cursor=pointer]:
+          - /url: https://github.com/C0MPL3XDEV/n8n-workflows
+          - generic [ref=e217]:
+            - generic [ref=e218]:
+              - heading "n8n-workflows" [level=3] [ref=e219]
+              - img [ref=e220]
+            - paragraph [ref=e222]: all of the workflows of n8n i could find (also from the site itself)
+        - link "newsletter-ai AI-powered tech newsletter for developers and cybersecurity enthusiasts. Curated daily or bi-weekly content on the latest trends in programming, hacking, infosec, devops etc.... ai angular frontend TypeScript" [ref=e223] [cursor=pointer]:
+          - /url: https://github.com/C0MPL3XDEV/newsletter-ai
+          - generic [ref=e225]:
+            - generic [ref=e226]:
+              - heading "newsletter-ai" [level=3] [ref=e227]
+              - img [ref=e228]
+            - paragraph [ref=e230]: AI-powered tech newsletter for developers and cybersecurity enthusiasts. Curated daily or bi-weekly content on the latest trends in programming, hacking, infosec, devops etc....
+            - generic [ref=e231]:
+              - generic [ref=e232]: ai
+              - generic [ref=e233]: angular
+              - generic [ref=e234]: frontend
+              - generic [ref=e235]: TypeScript
+        - link "newsletter-ai-backend AI-powered tech newsletter for developers and cybersecurity enthusiasts. Curated daily or bi-weekly content on the latest trends in programming, hacking, infosec, devops etc.... ai backend honojs TypeScript" [ref=e236] [cursor=pointer]:
+          - /url: https://github.com/C0MPL3XDEV/newsletter-ai-backend
+          - generic [ref=e238]:
+            - generic [ref=e239]:
+              - heading "newsletter-ai-backend" [level=3] [ref=e240]
+              - img [ref=e241]
+            - paragraph [ref=e243]: AI-powered tech newsletter for developers and cybersecurity enthusiasts. Curated daily or bi-weekly content on the latest trends in programming, hacking, infosec, devops etc....
+            - generic [ref=e244]:
+              - generic [ref=e245]: ai
+              - generic [ref=e246]: backend
+              - generic [ref=e247]: honojs
+              - generic [ref=e248]: TypeScript
+    - generic [ref=e249]:
+      - generic [ref=e250]:
+        - heading "Contact" [level=2] [ref=e251]
+        - paragraph [ref=e252]: Have a project in mind? Let’s build something awesome together.
+      - generic [ref=e255]:
+        - generic [ref=e256]:
+          - generic [ref=e257]:
+            - text: First name
+            - textbox "First name" [ref=e258]:
+              - /placeholder: Jane
+          - generic [ref=e259]:
+            - text: Last name
+            - textbox "Last name" [ref=e260]:
+              - /placeholder: Doe
+        - generic [ref=e261]:
+          - generic [ref=e262]:
+            - text: Email
+            - textbox "Email" [ref=e263]:
+              - /placeholder: jane@example.com
+          - generic [ref=e264]:
+            - text: Phone (optional)
+            - textbox "Phone (optional)" [ref=e265]:
+              - /placeholder: +1 (555) 000-0000
+        - generic [ref=e266]:
+          - text: Message
+          - textbox "Message" [ref=e267]:
+            - /placeholder: Tell me about your project...
+        - button "Send Message" [ref=e268] [cursor=pointer]
+    - contentinfo [ref=e269]:
+      - generic [ref=e270]:
+        - generic [ref=e271]:
+          - generic [ref=e272]:
+            - heading "C0MPL3XDEV" [level=2] [ref=e274]
+            - paragraph [ref=e276]: Crafting scalable, high-performance digital solutions with a focus on user experience and clean architecture.
+          - generic [ref=e278]:
+            - heading "Navigation" [level=3] [ref=e279]
+            - navigation [ref=e280]:
+              - link "Home" [ref=e281] [cursor=pointer]:
+                - /url: /
+              - link "Skills" [ref=e282] [cursor=pointer]:
+                - /url: "#skills"
+              - link "Experience" [ref=e283] [cursor=pointer]:
+                - /url: "#experience"
+              - link "Projects" [ref=e284] [cursor=pointer]:
+                - /url: "#projects"
+              - link "Contact" [ref=e285] [cursor=pointer]:
+                - /url: "#contact"
+          - generic [ref=e286]:
+            - heading "Connect" [level=3] [ref=e287]
+            - generic [ref=e288]:
+              - link "GitHub" [ref=e289] [cursor=pointer]:
+                - /url: https://github.com/C0MPL3XDEV/
+                - img [ref=e290]
+              - link "LinkedIn" [ref=e292] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/carmine-giuseppe-chessa-018750261/
+                - img [ref=e293]
+              - link "Instagram" [ref=e295] [cursor=pointer]:
+                - /url: https://instagram.com/carmine.developer/
+                - img [ref=e296]
+              - link "X" [ref=e298] [cursor=pointer]:
+                - /url: https://x.com/COMPLEXDEV2/
+                - img [ref=e299]
+            - link "Contact Me" [ref=e301] [cursor=pointer]:
+              - /url: "#contact"
+        - generic [ref=e302]:
+          - paragraph [ref=e303]: © 2026 C0MPL3XDEV. All rights reserved.
+          - paragraph [ref=e304]:
+            - text: Built with
+            - generic [ref=e305]: Next.js
+            - text: "&"
+            - generic [ref=e306]: Tailwind
+  - alert [ref=e307]
+```
