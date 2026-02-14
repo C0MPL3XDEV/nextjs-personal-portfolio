@@ -1,0 +1,40 @@
+{
+  "name": "COMPL3XDEV — Full Stack Developer",
+  "short_name": "COMPL3XDEV",
+  "description": "Full Stack Developer portfolio. Building secure, scalable digital experiences with a focus on clean architecture, performance, and creativity.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "browser"],
+  "orientation": "portrait-primary",
+  "background_color": "#050507",
+  "theme_color": "#7A5CFF",
+  "lang": "en",
+  "categories": ["portfolio", "technology", "developer"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

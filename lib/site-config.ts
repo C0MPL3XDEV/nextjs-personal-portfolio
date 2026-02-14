@@ -2,6 +2,7 @@ export const siteConfig = {
     name: "C0MPL3XDEV",
     title: "Full Stack Developer",
     description: "Software Technologies student and Junior Full Stack Developer with 2 years of experience. Passionate about web development, cybersecurity, and software architecture.",
+    url: "https://carminedev.it/",
     email: "complexdev3@gmail.com",
     links: {
         github: "https://github.com/C0MPL3XDEV/",
