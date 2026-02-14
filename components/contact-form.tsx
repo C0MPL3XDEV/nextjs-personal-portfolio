@@ -162,7 +162,7 @@ export function ContactForm() {
                 </div>
 
                 {/* Global Error Message */}
-                {state.errors && state.errors.length > 0 && !state.succeeded && (
+                {state.errors && Object.keys(state.errors).length > 0 && !state.succeeded && (
                     <div className="p-3 rounded-md bg-destructive/10 text-destructive text-sm flex items-center gap-2">
                         <AlertCircle className="w-4 h-4" />
                         <span>Oops! There was a problem submitting your form. Please try again.</span>
