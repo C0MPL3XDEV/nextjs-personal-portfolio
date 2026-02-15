@@ -21,7 +21,7 @@ export const SectionHeading = ({
                     {subtitle}
                 </p>
             )}
-            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" />
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-500 rounded-full" />
         </div>
     );
 };

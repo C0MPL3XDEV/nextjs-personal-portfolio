@@ -17,7 +17,7 @@ export const Timeline = ({ data }: { data: { title: string; date: string; descri
                 >
 
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                        <div className="w-3 h-3 bg-indigo-500 rounded-full ring-2 ring-indigo-500/20 group-hover:scale-125 transition-transform" />
+                        <div className="w-3 h-3 bg-primary rounded-full ring-2 ring-primary/20 group-hover:scale-125 transition-transform" />
                     </div>
 
                     <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-card p-4 rounded-xl border border-border/50 shadow-sm hover:shadow-md transition-shadow">

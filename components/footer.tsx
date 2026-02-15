@@ -32,7 +32,7 @@ export function Footer() {
 
     return (
         <footer className="relative pt-20 pb-10 px-5">
-            <div className="max-w-6xl mx-auto bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden relative">
+            <div className="max-w-6xl mx-auto bg-card/40 backdrop-blur-xl border border-border/50 rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden relative">
 
                 {/* Grid Container */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-5">
@@ -59,7 +59,7 @@ export function Footer() {
                                 <Link
                                     key={idx}
                                     href={item.href}
-                                    className="text-sm text-muted-foreground hover:text-indigo-400 transition-colors w-fit leading-7 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500 rounded-sm"
+                                    className="text-sm text-muted-foreground hover:text-primary transition-colors w-fit leading-7 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded-sm"
                                 >
                                     {item.label}
                                 </Link>
@@ -79,7 +79,7 @@ export function Footer() {
                                         href={social.link}
                                         aria-label={social.label}
                                         target="_blank"
-                                        className="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all hover:scale-110 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                                        className="p-2 rounded-full bg-secondary hover:bg-secondary/80 border border-border/50 hover:border-border transition-all hover:scale-110 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                                     >
                                         <Icon className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
                                     </Link>
@@ -88,7 +88,7 @@ export function Footer() {
                         </div>
                         <Link
                             href="#contact"
-                            className="mt-4 px-6 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition-colors w-fit text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ring-offset-2 ring-offset-black"
+                            className="mt-4 px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-colors w-fit text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ring-offset-2 ring-offset-background"
                         >
                             Contact Me
                         </Link>
@@ -96,7 +96,7 @@ export function Footer() {
                 </div>
 
                 {/* Bottom Divider & Copyright */}
-                <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-xs text-muted-foreground text-center md:text-left">
                         &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
                     </p>

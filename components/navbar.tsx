@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import { SiGithub, SiLinkedin, SiInstagram, SiX } from "react-icons/si";
 import { Menu, X } from "lucide-react";
 
+import { ModeToggle } from "@/components/mode-toggle";
+
 export function Navbar({ className }: { className?: string }) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -36,7 +38,7 @@ export function Navbar({ className }: { className?: string }) {
     return (
         <nav
             className={cn(
-                "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100vw-2rem)] max-w-[1100px] rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-lg flex items-center justify-between px-5 h-16",
+                "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100vw-2rem)] max-w-[1100px] rounded-full border border-border bg-background/80 backdrop-blur-xl shadow-lg flex items-center justify-between px-5 h-16",
                 className
             )}
         >
@@ -60,7 +62,7 @@ export function Navbar({ className }: { className?: string }) {
                     <Link
                         key={idx}
                         href={item.href}
-                        className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors hover:underline underline-offset-4 decoration-indigo-500"
+                        className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors hover:underline underline-offset-4 decoration-primary"
                     >
                         {item.label}
                     </Link>
@@ -82,6 +84,7 @@ export function Navbar({ className }: { className?: string }) {
                         </Link>
                     );
                 })}
+                <ModeToggle />
             </div>
 
             {/* Mobile Menu Toggle */}
@@ -106,21 +109,24 @@ export function Navbar({ className }: { className?: string }) {
                             {item.label}
                         </Link>
                     ))}
-                    <div className="flex gap-4 pt-4 border-t border-border">
-                        {socials.map((social, idx) => {
-                            const Icon = social.icon;
-                            return (
-                                <Link
-                                    key={idx}
-                                    href={social.link}
-                                    aria-label={social.label}
-                                    target="_blank"
-                                    className="text-muted-foreground hover:text-primary transition-colors"
-                                >
-                                    <Icon className="w-5 h-5" />
-                                </Link>
-                            );
-                        })}
+                    <div className="flex gap-4 pt-4 border-t border-border items-center justify-between">
+                        <div className="flex gap-4">
+                            {socials.map((social, idx) => {
+                                const Icon = social.icon;
+                                return (
+                                    <Link
+                                        key={idx}
+                                        href={social.link}
+                                        aria-label={social.label}
+                                        target="_blank"
+                                        className="text-muted-foreground hover:text-primary transition-colors"
+                                    >
+                                        <Icon className="w-5 h-5" />
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                        <ModeToggle />
                     </div>
                 </div>
             )}

@@ -12,7 +12,7 @@ import { Section } from '@/components/ui/section';
 
 export default function page() {
     return <div className="min-h-screen bg-background overflow-hidden selection:bg-indigo-500 selection:text-white">
-        <div className="dark:bg-grid-white/[0.05] bg-grid-black/[0.05] relative pb-20">
+        <div className="dark:bg-grid-white/[0.05] bg-grid-black/[0.02] relative pb-20">
 
             <Navbar />
 
