@@ -46,11 +46,11 @@ export function SpotifyWidget({ compact = false }: { compact?: boolean }) {
 
     if (loading) {
         return (
-            <div className="flex items-center gap-3 p-3 rounded-2xl bg-black/20 border border-white/5 w-fit backdrop-blur-md animate-pulse">
-                <div className="w-10 h-10 rounded-md bg-white/10" />
+            <div className="flex items-center gap-3 p-3 rounded-2xl bg-card/40 border border-border/50 w-fit backdrop-blur-md animate-pulse">
+                <div className="w-10 h-10 rounded-md bg-muted" />
                 <div className="space-y-2">
-                    <div className="w-24 h-3 rounded-full bg-white/10" />
-                    <div className="w-16 h-2 rounded-full bg-white/10" />
+                    <div className="w-24 h-3 rounded-full bg-muted" />
+                    <div className="w-16 h-2 rounded-full bg-muted-foreground/30" />
                 </div>
             </div>
         );
@@ -72,7 +72,7 @@ export function SpotifyWidget({ compact = false }: { compact?: boolean }) {
                     href={data.songUrl || "#"}
                     target="_blank"
                     className={cn(
-                        "group relative flex items-center gap-3 p-3 pr-4 rounded-2xl bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 backdrop-blur-md transition-all duration-300 cursor-pointer",
+                        "group relative flex items-center gap-3 p-3 pr-4 rounded-2xl bg-card/40 hover:bg-card/60 border border-border/50 hover:border-border backdrop-blur-md transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md",
                         compact ? "w-fit max-w-[320px]" : "w-full sm:w-fit"
                     )}
                 >

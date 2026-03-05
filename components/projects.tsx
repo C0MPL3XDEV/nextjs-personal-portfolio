@@ -25,10 +25,10 @@ export async function Projects() {
 
                     return (
                         <Link href={project.html_url} key={project.id} target="_blank">
-                            <div className="relative group rounded-xl bg-card border border-border/50 overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-300">
+                            <div className="relative group rounded-xl bg-card border border-border/50 overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300">
                                 <div className="p-5 flex flex-col h-full gap-4">
                                     <div className="flex justify-between items-start">
-                                        <h3 className="text-xl font-bold truncate group-hover:text-indigo-400 transition-colors">
+                                        <h3 className="text-xl font-bold truncate group-hover:text-primary transition-colors">
                                             {project.name}
                                         </h3>
                                         <SiGithub className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" />
@@ -43,7 +43,7 @@ export async function Projects() {
                                             </span>
                                         ))}
                                         {project.language && (
-                                            <span className="text-xs px-2 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                                            <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
                                                 {project.language}
                                             </span>
                                         )}
@@ -57,7 +57,7 @@ export async function Projects() {
             {projects.length === 0 && (
                 <div className="text-center text-muted-foreground">
                     <p>Could not fetch projects from GitHub.</p>
-                    <Link href="https://github.com/C0MPL3XDEV" className="text-indigo-500 hover:underline">
+                    <Link href="https://github.com/C0MPL3XDEV" className="text-primary hover:underline">
                         Visit my profile
                     </Link>
                 </div>
