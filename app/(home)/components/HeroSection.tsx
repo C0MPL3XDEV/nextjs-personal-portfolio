@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { SpotifyWidget } from "@/components/spotify-widget";
+import CodeEditorMock from "@/components/hero/CodeEditorMock";
 
 export default function HeroSection() {
 
@@ -103,14 +104,10 @@ export default function HeroSection() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative flex-1 flex justify-center lg:justify-end"
             >
-                <div className="relative w-72 h-72 md:w-96 md:h-96">
+                <div className="relative w-full max-w-[500px] h-[350px] md:h-[450px]">
                     <div className="absolute inset-0 bg-gradient-to-r from-primary to-purple-500 rounded-full blur-3xl opacity-20 animate-pulse" />
-                    <div className="relative w-full h-full rounded-2xl overflow-hidden border border-border/50 shadow-2xl rotate-3 hover:rotate-0 transition-all duration-500 bg-card/30 backdrop-blur-sm group">
-                        {/* Placeholder for Profile Image or abstract interactive element */}
-                        <div className="absolute inset-0 bg-grid-white/[0.05] [mask-image:linear-gradient(to_bottom,transparent,10%,#000,100%)] dark:bg-grid-white/[0.05] bg-grid-black/[0.05]" />
-                        <div className="flex items-center justify-center h-full text-muted-foreground font-mono text-sm">
-                            {`< Code / >`}
-                        </div>
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden border border-border/50 shadow-2xl bg-card/10 backdrop-blur-sm">
+                        <CodeEditorMock />
                     </div>
                 </div>
             </motion.div>

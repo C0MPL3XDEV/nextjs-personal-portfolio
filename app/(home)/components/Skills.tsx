@@ -8,13 +8,14 @@ import { SiPhp, SiLinux, SiTypescript, SiElastic, SiTailwindcss, SiPostgresql, S
 import { FaLaravel, FaDocker, FaVuejs, FaReact } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { IconType } from "react-icons";
 
 // Define categories
 type Category = "All" | "Frontend" | "Backend" | "DevOps" | "Data/Tools";
 
 interface Skill {
     title: string;
-    icon: React.ElementType;
+    icon: IconType;
     category: Category[];
     description: string;
 }

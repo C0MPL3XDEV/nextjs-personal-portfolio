@@ -26,6 +26,17 @@
     --input: 240 5.9% 90%;
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.5rem;
+
+    /* Code Editor Mock theme variables */
+    --bg-panel: hsla(0, 0%, 100%, 0.8);
+    --border-panel: hsl(240, 5.9%, 90%);
+    --bg-terminal: hsla(240, 4.8%, 95.9%, 0.5);
+    --text-terminal: hsl(240, 5.9%, 30%);
+    --code-blue: hsl(221.2, 83.2%, 53.3%);
+    --code-green: hsl(142.1, 76.2%, 36.3%);
+    --code-yellow: hsl(47.9, 95.8%, 40%);
+    --code-purple: hsl(262.1, 83.3%, 57.8%);
+    --panel-glow: 0 4px 20px rgba(0, 0, 0, 0.05);
   }
 
   .dark {
@@ -50,6 +61,17 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 263.4 70% 50.4%;
+
+    /* Code Editor Mock theme variables */
+    --bg-panel: hsla(0, 0%, 0%, 0.6);
+    --border-panel: hsla(240, 3.7%, 15.9%, 0.5);
+    --bg-terminal: hsla(0, 0%, 0%, 0.4);
+    --text-terminal: hsl(240, 5%, 80%);
+    --code-blue: hsl(217.2, 91.2%, 59.8%);
+    --code-green: hsl(142.1, 70.6%, 45.3%);
+    --code-yellow: hsl(47.9, 95.8%, 53.1%);
+    --code-purple: hsl(263.4, 70%, 50.4%);
+    --panel-glow: 0 0 30px rgba(139, 92, 246, 0.15);
   }
 
   * {
