@@ -51,9 +51,9 @@ export default function HeroSection() {
                     Available for work
                 </motion.div>
 
-                <h1 className="text-4xl lg:text-7xl font-bold tracking-tight">
+                <h1 className="font-heading text-5xl lg:text-8xl font-bold tracking-tight">
                     <motion.div variants={child}>Building digital</motion.div>
-                    <motion.div variants={child} className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">
+                    <motion.div variants={child} className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-lime-200">
                         experiences
                     </motion.div>
                     <motion.div variants={child}>that matter.</motion.div>
@@ -105,7 +105,7 @@ export default function HeroSection() {
                 className="relative flex-1 flex justify-center lg:justify-end"
             >
                 <div className="relative w-full max-w-[500px] h-[350px] md:h-[450px]">
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-purple-500 rounded-full blur-3xl opacity-20 animate-pulse" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-lime-300 rounded-full blur-3xl opacity-20 animate-pulse" />
                     <div className="relative w-full h-full rounded-2xl overflow-hidden border border-border/50 shadow-2xl bg-card/10 backdrop-blur-sm">
                         <CodeEditorMock />
                     </div>

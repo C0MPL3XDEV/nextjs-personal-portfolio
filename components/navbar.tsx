@@ -45,7 +45,7 @@ export function Navbar({ className }: { className?: string }) {
             <div className="flex items-center gap-2">
                 <Link
                     href="/"
-                    className="font-bold text-xl flex items-center gap-2"
+                    className="font-heading font-bold text-xl flex items-center gap-2"
                     onClick={() => {
                         setIsMobileMenuOpen(false);
                         window.scrollTo({ top: 0, behavior: "smooth" });

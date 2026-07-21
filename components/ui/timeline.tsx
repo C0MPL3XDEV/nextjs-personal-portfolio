@@ -36,7 +36,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                         {/* Header */}
                         <div className="flex flex-col mb-4">
                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-                                <h3 className="font-bold text-lg text-foreground tracking-tight">{item.title}</h3>
+                                <h3 className="font-heading font-bold text-lg text-foreground tracking-tight">{item.title}</h3>
                                 <div className="inline-flex items-center rounded-full border border-border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-muted-foreground bg-secondary/50">
                                     {item.date}
                                 </div>
