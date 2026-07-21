@@ -11,7 +11,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Section } from '@/components/ui/section';
 
 export default function page() {
-    return <div className="min-h-screen bg-background overflow-hidden selection:bg-indigo-500 selection:text-white">
+    return <div className="min-h-screen bg-background overflow-hidden selection:bg-primary selection:text-primary-foreground">
         <div className="dark:bg-grid-white/[0.05] bg-grid-black/[0.02] relative pb-20">
 
             <Navbar />

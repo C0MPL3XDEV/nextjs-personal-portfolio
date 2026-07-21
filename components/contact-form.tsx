@@ -172,7 +172,9 @@ export function ContactForm() {
                 <button
                     type="submit"
                     disabled={state.submitting}
-                    className="w-full h-11 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full h-11 rounded-md bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-colors
+                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50
+                               disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                     {state.submitting ? (
                         <>

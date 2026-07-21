@@ -11,9 +11,9 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 262.1 83.3% 57.8%;
-    /* Violet 600 - Purple Accent */
-    --primary-foreground: 210 40% 98%;
+    --primary: 83.7 80.5% 44.3%;
+    /* Lime 500 - Acid accent */
+    --primary-foreground: 240 10% 3.9%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
@@ -24,7 +24,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 262.1 83.3% 57.8%;
+    --ring: 83.7 80.5% 44.3%;
     --radius: 0.5rem;
 
     /* Code Editor Mock theme variables */
@@ -47,9 +47,9 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 263.4 70% 50.4%;
-    /* Violet 500 - slightly lighter/vibrant for dark mode */
-    --primary-foreground: 210 40% 98%;
+    --primary: 82.7 78% 55.5%;
+    /* Lime 400 - Acid accent (dark mode) */
+    --primary-foreground: 240 10% 3.9%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
@@ -60,7 +60,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 263.4 70% 50.4%;
+    --ring: 82.7 78% 55.5%;
 
     /* Code Editor Mock theme variables */
     --bg-panel: hsla(0, 0%, 0%, 0.6);
@@ -71,7 +71,7 @@
     --code-green: hsl(142.1, 70.6%, 45.3%);
     --code-yellow: hsl(47.9, 95.8%, 53.1%);
     --code-purple: hsl(263.4, 70%, 50.4%);
-    --panel-glow: 0 0 30px rgba(139, 92, 246, 0.15);
+    --panel-glow: 0 0 30px rgba(163, 230, 53, 0.15);
   }
 
   * {

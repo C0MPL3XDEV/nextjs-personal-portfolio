@@ -21,7 +21,7 @@ export const SectionHeading = ({
                     {subtitle}
                 </p>
             )}
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-500 rounded-full mx-auto" />
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mx-auto" />
         </div>
     );
 };
