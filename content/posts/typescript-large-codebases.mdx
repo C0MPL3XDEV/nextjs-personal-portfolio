@@ -1,0 +1,31 @@
+---
+title: "TypeScript Features That Actually Pay Off in Large Codebases"
+date: "2025-08-14"
+excerpt: "Not every TypeScript feature is worth reaching for. Here are the handful that keep paying dividends as a codebase grows, and the ones I've stopped bothering with."
+tags: ["TypeScript", "JavaScript", "Frontend"]
+---
+
+TypeScript has a large surface area, and most of it doesn't matter day to day. A short list of what actually earns its keep once a codebase gets past a few thousand lines.
+
+## Discriminated unions over optional flags
+
+A `status: "loading" | "success" | "error"` union with a matching data shape per branch catches far more bugs than a pile of optional booleans:
+
+```ts
+type RequestState =
+    | { status: "loading" }
+    | { status: "success"; data: Repo[] }
+    | { status: "error"; message: string };
+```
+
+The compiler forces every consumer to handle all three cases — no more `if (data && !loading && !error)` guesswork.
+
+## `satisfies` over type assertions
+
+`as const satisfies Config` gets you literal type inference *and* validation against a shape, without the escape hatch of `as SomeType` silently lying to the compiler.
+
+## What I've stopped using
+
+Deep conditional/mapped type gymnastics almost never survive a refactor readably. If a type needs a comment explaining what it does, a slightly duplicated, boring type usually reads better six months later — including to me.
+
+The pattern across all of this: TypeScript is most valuable at the boundaries (API responses, form data, config) and least valuable trying to encode business logic in the type system itself.

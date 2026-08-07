@@ -1,0 +1,29 @@
+---
+title: "A Pragmatic Git Workflow for Solo Devs and Small Teams"
+date: "2025-12-15"
+excerpt: "Gitflow is overkill for most side projects and small teams. Here's the lighter workflow I actually use, and when it's time to add more process back in."
+tags: ["Git", "Tools", "Workflow"]
+---
+
+Most Git workflow guides are written for teams of 20+ engineers shipping on a fixed release train. Most of us aren't that. Here's what actually works at a smaller scale.
+
+## Trunk-based, short-lived branches
+
+One `main` branch that's always deployable, feature branches that live for a day or two at most, merged via PR even solo — the PR diff itself is worth it as a self-review step before merging:
+
+```bash
+git checkout -b fix/mailbox-quota-validation
+# ... work, commit ...
+git push -u origin fix/mailbox-quota-validation
+# open PR, review own diff, merge
+```
+
+## Commit messages as documentation, not ceremony
+
+I don't enforce Conventional Commits on personal projects, but I do enforce one rule on myself: the message explains *why*, not *what* — the diff already shows what changed.
+
+## When to add more process
+
+The moment a second person joins with equal write access, or a release needs to be cut from a point that isn't the tip of `main`, that's when release branches and a real changelog earn their overhead. Adding that structure before it's needed just slows down the exact velocity that made a small team worth being on in the first place.
+
+Process should scale with team size and release cadence — not get front-loaded because a guide somewhere said it's best practice.

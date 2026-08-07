@@ -1,0 +1,28 @@
+---
+title: "PostgreSQL or MySQL? How I Actually Decide"
+date: "2025-11-19"
+excerpt: "Not a benchmark post. A practical checklist for picking between the two most boring, most reliable choices in relational databases."
+tags: ["PostgreSQL", "MySQL", "Backend"]
+---
+
+Both are mature, both are free, both will handle the vast majority of projects without complaint. The choice usually comes down to a few concrete questions rather than benchmarks.
+
+## Do I need real JSON querying?
+
+MySQL's JSON support has improved, but PostgreSQL's `jsonb` with indexable operators is still the more comfortable place to store semi-structured data you'll actually query into, not just store and retrieve whole.
+
+```sql
+SELECT * FROM events WHERE payload @> '{"type": "login"}';
+```
+
+## Is the hosting/tooling ecosystem already decided?
+
+If the stack is Laravel + a managed MySQL instance the team already knows how to operate, that operational familiarity usually outweighs a marginal feature advantage elsewhere. I don't fight the ecosystem just to use my preferred database.
+
+## Do I need advanced extensions?
+
+PostgreSQL's extension ecosystem — `PostGIS` for geo, `pg_trgm` for fuzzy search, full text search built in — covers use cases that would otherwise mean bolting on a separate service. If I know a project needs one of these later, I pick Postgres up front.
+
+## The honest default
+
+For a new greenfield backend project with no constraints, I reach for PostgreSQL first. For anything joining an existing Laravel/MySQL shop, I use what's already there. Neither choice is a mistake — the mistake is spending a week benchmarking when the real answer was "whatever your team already operates well."

@@ -1,0 +1,28 @@
+---
+title: "When Firebase Is the Right Call for a Side Project"
+date: "2026-04-12"
+excerpt: "Firebase gets dismissed as 'not a real backend' by a lot of developers who'd actually ship faster using it for the right kind of project."
+tags: ["Firebase", "Data/Tools"]
+---
+
+I reach for Laravel or a custom Node backend for most things, but a few side projects genuinely call for Firebase instead — and pretending otherwise just means slower shipping for no real benefit.
+
+## The signal: real-time state with no complex relational data
+
+A live chat, a presence indicator, a collaborative list — anything where "multiple clients need to see the same state update instantly" is the core requirement, not an add-on:
+
+```js
+onSnapshot(doc(db, "rooms", roomId), (snapshot) => {
+    setMessages(snapshot.data().messages);
+});
+```
+
+Building that same real-time sync manually with WebSockets and a relational database is a reasonable weekend project. Firebase gives it to you for free.
+
+## The tradeoff I accept knowingly
+
+NoSQL document modeling means denormalizing data in ways that feel wrong coming from a relational background, and Firestore's query limitations (no real joins, limited compound queries) mean the data model has to be designed around the app's read patterns from day one, not evolved later. For a side project with a known, small set of screens, that's a fair trade for the development speed.
+
+## Where I still say no
+
+Anything with genuinely relational data — invoicing, inventory, multi-tenant permissions — goes back to PostgreSQL every time. Firebase is a great tool for a specific shape of problem, not a general-purpose backend replacement.

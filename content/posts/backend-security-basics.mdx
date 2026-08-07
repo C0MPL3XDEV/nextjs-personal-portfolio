@@ -1,0 +1,36 @@
+---
+title: "Security Basics Every Backend Developer Should Practice by Default"
+date: "2026-01-10"
+excerpt: "Not a pentesting deep-dive — the unglamorous, easy-to-skip habits that prevent the most common backend vulnerabilities before they ever ship."
+tags: ["Security", "Backend"]
+---
+
+Cybersecurity is a big part of why I find backend work interesting, but most real-world vulnerabilities I've seen aren't exotic — they're skipped basics.
+
+## Parameterize everything, no exceptions
+
+SQL injection is a solved problem, and it still shows up because someone concatenated a string "just this once":
+
+```php
+// Never
+DB::select("SELECT * FROM users WHERE email = '$email'");
+
+// Always
+DB::select('SELECT * FROM users WHERE email = ?', [$email]);
+```
+
+Laravel's query builder and Eloquent do this for you by default — the only way to get injection is to actively opt out with raw string concatenation.
+
+## Validate on the server, not just the client
+
+Client-side validation is a UX feature, not a security control. Every Form Request rule needs to exist and be enforced server-side, because the client you built is not the only client that will ever call your API.
+
+## Least privilege for service accounts and API tokens
+
+A token scoped to exactly what a job needs — read-only, single-domain, time-limited — turns a leaked credential from an incident into a non-event. This is easy to skip when a project is small and painful to retrofit once it isn't.
+
+## Log security-relevant events, not just errors
+
+Failed logins, permission denials, and rate-limit hits are the events that let you notice an attack in progress instead of reconstructing one after the fact from access logs alone.
+
+None of this is advanced. All of it is the difference between "we have security" and "we haven't been tested yet."
