@@ -1,16 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { SiGithub, SiLinkedin, SiInstagram, SiX } from "react-icons/si";
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 
 import { ModeToggle } from "@/components/mode-toggle";
 
 export function Navbar({ className }: { className?: string }) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
+    const pathname = usePathname();
+
+    useEffect(() => {
+        if (pathname !== "/") return;
+
+        const sections = Array.from(document.querySelectorAll("section[id]"));
+        if (sections.length === 0) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            },
+            { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        return () => observer.disconnect();
+    }, [pathname]);
+
+    function isActive(href: string) {
+        if (href === "/blog") return pathname.startsWith("/blog");
+        if (href === "/") return pathname === "/" && activeSection === "home";
+
+        const hash = href.split("#")[1];
+        return pathname === "/" && activeSection === hash;
+    }
 
     const socials = [
         {
@@ -62,7 +94,10 @@ export function Navbar({ className }: { className?: string }) {
                     <Link
                         key={idx}
                         href={item.href}
-                        className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors hover:underline underline-offset-4 decoration-primary"
+                        className={cn(
+                            "text-sm font-medium transition-colors hover:underline underline-offset-4 decoration-primary",
+                            isActive(item.href) ? "text-primary" : "text-muted-foreground hover:text-primary"
+                        )}
                     >
                         {item.label}
                     </Link>
@@ -70,6 +105,15 @@ export function Navbar({ className }: { className?: string }) {
             </div>
 
             <div className="hidden md:flex items-center gap-4">
+                <button
+                    onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
+                    aria-label="Open command palette"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs text-muted-foreground border border-border hover:border-primary/50 hover:text-primary transition-colors"
+                >
+                    <Search className="w-3.5 h-3.5" />
+                    <kbd className="font-sans">⌘K</kbd>
+                </button>
+
                 {socials.map((social, idx) => {
                     const Icon = social.icon;
                     return (
@@ -103,7 +147,10 @@ export function Navbar({ className }: { className?: string }) {
                         <Link
                             key={idx}
                             href={item.href}
-                            className="text-lg font-medium text-foreground hover:text-primary"
+                            className={cn(
+                                "text-lg font-medium",
+                                isActive(item.href) ? "text-primary" : "text-foreground hover:text-primary"
+                            )}
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             {item.label}

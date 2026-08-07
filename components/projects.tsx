@@ -1,6 +1,8 @@
 import React from 'react';
 import { getRepos } from "@/lib/github";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Reveal } from "@/components/ui/reveal";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -18,7 +20,7 @@ export async function Projects() {
             />
 
             {featured && (
-                <div className="group relative rounded-2xl bg-card border border-primary/30 overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300">
+                <Reveal className="group relative rounded-2xl bg-card border border-primary/30 overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300">
                     <div className="p-6 md:p-10 flex flex-col gap-6">
                         <span className="w-fit text-xs font-semibold uppercase tracking-wider text-primary px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
                             Latest Project
@@ -67,13 +69,17 @@ export async function Projects() {
                             )}
                         </div>
                     </div>
-                </div>
+                </Reveal>
             )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {rest.map((project) => (
-                    <Link href={project.html_url} key={project.id} target="_blank">
-                        <div className="relative group rounded-xl bg-card border border-border/50 overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 h-full">
+                {rest.map((project, idx) => (
+                    <Reveal key={project.id} delay={idx * 0.05}>
+                        <SpotlightCard
+                            href={project.html_url}
+                            target="_blank"
+                            className="rounded-xl bg-card border border-border/50 overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 h-full"
+                        >
                             <div className="p-5 flex flex-col h-full gap-4">
                                 <div className="flex justify-between items-start">
                                     <h3 className="font-heading text-xl font-bold truncate group-hover:text-primary transition-colors">
@@ -97,8 +103,8 @@ export async function Projects() {
                                     )}
                                 </div>
                             </div>
-                        </div>
-                    </Link>
+                        </SpotlightCard>
+                    </Reveal>
                 ))}
             </div>
 

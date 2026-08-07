@@ -1,0 +1,33 @@
+---
+title: "What Learning Java After PHP Taught Me About OOP"
+date: "2026-02-08"
+excerpt: "I'd been writing object-oriented PHP professionally for years before university made me formalize it in Java. That order taught me things a textbook-first path wouldn't have."
+tags: ["Java", "OOP", "University"]
+---
+
+Studying Software Technologies at UniMol after already working with Laravel meant I hit Java's stricter OOP model with real production instincts already formed — and some of them turned out to be wrong.
+
+## Interfaces as contracts, enforced by the compiler
+
+PHP lets you be loose about interfaces if you're not disciplined. Java doesn't let you forget:
+
+```java
+public interface Repository<T> {
+    T findById(Long id);
+    List<T> findAll();
+}
+
+public class MailboxRepository implements Repository<Mailbox> {
+    // compiler error until every method is implemented
+}
+```
+
+That enforcement felt restrictive at first and became clarifying once I stopped fighting it — a class that claims to implement an interface genuinely can't lie about it.
+
+## Static typing surfaces design problems earlier
+
+A method signature that takes five parameters of the same type is a design smell in any language, but Java's type system makes the smell visible at the call site in a way PHP's looser typing doesn't force you to confront until runtime.
+
+## What transferred immediately
+
+Composition over inheritance, single responsibility, dependency injection — these principles didn't need relearning, just a new syntax. The professional experience made the university coursework faster; the coursework made the professional habits more precise about *why* they work, not just that they do.

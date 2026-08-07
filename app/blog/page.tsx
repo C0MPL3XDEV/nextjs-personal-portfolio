@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Reveal } from "@/components/ui/reveal";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { getAllPosts } from "@/lib/blog";
 import { cn } from "@/lib/utils";
 
@@ -30,43 +32,42 @@ export default function BlogPage() {
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {posts.map((post, idx) => (
-                                <Link
-                                    href={`/blog/${post.slug}`}
-                                    key={post.slug}
-                                    className={cn(
-                                        "group relative rounded-xl bg-card border border-border/50 overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 p-6 flex flex-col gap-4",
-                                        idx === 0 && "md:col-span-2"
-                                    )}
-                                >
-                                    <time className="text-xs uppercase tracking-wider text-muted-foreground">
-                                        {new Date(post.date).toLocaleDateString("en-US", {
-                                            year: "numeric",
-                                            month: "long",
-                                            day: "numeric",
-                                        })}
-                                    </time>
-                                    <h3
-                                        className={cn(
-                                            "font-heading font-bold tracking-tight group-hover:text-primary transition-colors",
-                                            idx === 0 ? "text-2xl lg:text-3xl" : "text-xl"
-                                        )}
+                                <Reveal key={post.slug} delay={(idx % 4) * 0.05} className={cn(idx === 0 && "md:col-span-2")}>
+                                    <SpotlightCard
+                                        href={`/blog/${post.slug}`}
+                                        className="rounded-xl bg-card border border-border/50 overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 p-6 flex flex-col gap-4 h-full"
                                     >
-                                        {post.title}
-                                    </h3>
-                                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
-                                        {post.excerpt}
-                                    </p>
-                                    <div className="flex flex-wrap gap-2 mt-auto">
-                                        {post.tags.map((tag) => (
-                                            <span
-                                                key={tag}
-                                                className="text-xs px-2 py-1 rounded-full bg-secondary text-secondary-foreground"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </Link>
+                                        <time className="text-xs uppercase tracking-wider text-muted-foreground">
+                                            {new Date(post.date).toLocaleDateString("en-US", {
+                                                year: "numeric",
+                                                month: "long",
+                                                day: "numeric",
+                                            })}
+                                            {" · "}{post.readingTime} min read
+                                        </time>
+                                        <h3
+                                            className={cn(
+                                                "font-heading font-bold tracking-tight group-hover:text-primary transition-colors",
+                                                idx === 0 ? "text-2xl lg:text-3xl" : "text-xl"
+                                            )}
+                                        >
+                                            {post.title}
+                                        </h3>
+                                        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
+                                            {post.excerpt}
+                                        </p>
+                                        <div className="flex flex-wrap gap-2 mt-auto">
+                                            {post.tags.map((tag) => (
+                                                <span
+                                                    key={tag}
+                                                    className="text-xs px-2 py-1 rounded-full bg-secondary text-secondary-foreground"
+                                                >
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </SpotlightCard>
+                                </Reveal>
                             ))}
                         </div>
                     )}

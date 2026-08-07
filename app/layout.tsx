@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { CommandPalette } from "@/components/command-palette";
 import { siteConfig } from "@/lib/site-config";
+import { getAllPosts } from "@/lib/blog";
 import { cn } from "@/lib/utils";
 
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
@@ -100,6 +103,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const posts = getAllPosts().map((post) => ({ title: post.title, slug: post.slug }));
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background font-sans antialiased", dmSans.variable, spaceGrotesk.variable)}>
@@ -109,7 +114,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollProgress />
           {children}
+          <CommandPalette posts={posts} />
         </ThemeProvider>
       </body>
     </html>

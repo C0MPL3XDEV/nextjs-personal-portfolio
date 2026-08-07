@@ -5,6 +5,7 @@ import HeroSection from "@/app/(home)/components/HeroSection";
 import Skills from "@/app/(home)/components/Skills";
 import { Experience } from "@/components/experience";
 import { Projects } from "@/components/projects";
+import GithubActivity from "@/app/(home)/components/GithubActivity";
 import LatestWriting from "@/app/(home)/components/LatestWriting";
 import { ContactForm } from "@/components/contact-form";
 import { Footer } from "@/components/footer";
@@ -31,6 +32,10 @@ export default function page() {
 
             <Section id="projects" className="pb-32">
                 <Projects />
+            </Section>
+
+            <Section id="github" className="pb-32">
+                <GithubActivity />
             </Section>
 
             <Section id="blog" className="pb-32">
