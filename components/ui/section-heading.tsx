@@ -13,7 +13,7 @@ export const SectionHeading = ({
 }) => {
     return (
         <div className={cn("text-center mb-10 block", className)}>
-            <h2 className="inline-block text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 mb-3 leading-[1.15]">
+            <h2 className="font-heading inline-block text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 mb-3 leading-[1.15]">
                 {title}
             </h2>
             {subtitle && (

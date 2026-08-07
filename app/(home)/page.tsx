@@ -5,6 +5,7 @@ import HeroSection from "@/app/(home)/components/HeroSection";
 import Skills from "@/app/(home)/components/Skills";
 import { Experience } from "@/components/experience";
 import { Projects } from "@/components/projects";
+import LatestWriting from "@/app/(home)/components/LatestWriting";
 import { ContactForm } from "@/components/contact-form";
 import { Footer } from "@/components/footer";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -32,7 +33,9 @@ export default function page() {
                 <Projects />
             </Section>
 
-
+            <Section id="blog" className="pb-32">
+                <LatestWriting />
+            </Section>
 
             <Section id="contact" className="pt-10 pb-20">
                 <SectionHeading
