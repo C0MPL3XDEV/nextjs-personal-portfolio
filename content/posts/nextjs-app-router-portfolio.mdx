@@ -1,0 +1,27 @@
+---
+title: "Why I Rebuilt My Portfolio on the Next.js App Router"
+date: "2026-05-02"
+excerpt: "Server Components, colocated section components, and what actually changed when moving off the Pages Router."
+tags: ["Next.js", "React", "Frontend"]
+---
+
+This site itself is the case study. Here's what moving to the App Router actually changed in practice, beyond the folder rename.
+
+## Server Components by default
+
+The `Projects` section fetches from the GitHub API directly in a server component — no `useEffect`, no loading spinner, no client-side waterfall. The HTML that reaches the browser already has the data in it.
+
+```tsx
+export async function Projects() {
+    const projects = await getRepos();
+    // render directly — no client fetch needed
+}
+```
+
+## Colocation over central folders
+
+Route-specific pieces like `HeroSection` and `Skills` live inside `app/(home)/components/`, next to the page that uses them, while genuinely shared pieces (`Navbar`, `Footer`, the `Timeline` primitive) stay in the top-level `components/` folder. The App Router's file conventions make that split obvious instead of arbitrary.
+
+## The tradeoff
+
+Not everything is free. Anything interactive — the mobile nav toggle, the skills filter, the contact form — still needs `"use client"`, and drawing that boundary correctly takes more intention than the old all-client model. Worth it for a mostly-static, content-first site like this one.

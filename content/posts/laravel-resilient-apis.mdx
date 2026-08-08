@@ -1,0 +1,35 @@
+---
+title: "Building Resilient REST APIs with Laravel"
+date: "2026-06-10"
+excerpt: "Lessons from building and maintaining production APIs at scale — validation, error handling, and versioning strategies that actually hold up."
+tags: ["Laravel", "PHP", "Backend"]
+---
+
+Most Laravel API tutorials stop at the happy path: a controller, a resource, a 200 response. Production traffic doesn't stop there, and neither should your API design.
+
+## Validate at the edge
+
+Form Requests are the single highest-leverage habit for a resilient API. Every mutating endpoint gets its own request class, and the controller never sees invalid data:
+
+```php
+class UpdateMailboxRequest extends FormRequest
+{
+    public function rules(): array
+    {
+        return [
+            'domain_id' => ['required', 'exists:domains,id'],
+            'quota_mb' => ['required', 'integer', 'min:100', 'max:102400'],
+        ];
+    }
+}
+```
+
+## Error responses need a shape
+
+Clients build UI around your error format. Pick a shape once — I use `{ message, errors }` — and enforce it in the exception handler so a stray `abort(500)` never leaks a stack trace to the frontend.
+
+## Version before you need to
+
+Every breaking change gets a new `v2` route prefix instead of mutating `v1` in place. It costs a few extra minutes today and saves an incident later, once a mobile client you don't control is still calling the old shape.
+
+The common thread: none of this is clever. It's just deciding these things before the API has real consumers, instead of after.

@@ -2,12 +2,16 @@
 
 import React from 'react';
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { siteConfig } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { SpotifyWidget } from "@/components/spotify-widget";
 import CodeEditorMock from "@/components/hero/CodeEditorMock";
+import { Tilt } from "@/components/ui/tilt";
+
+const HeroScene = dynamic(() => import("@/components/three/HeroScene"), { ssr: false });
 
 export default function HeroSection() {
 
@@ -36,7 +40,11 @@ export default function HeroSection() {
     };
 
     return (
-        <div className="min-h-[80vh] flex flex-col-reverse lg:flex-row gap-10 items-center justify-between pb-10">
+        <div className="relative min-h-[80vh] flex flex-col-reverse lg:flex-row gap-10 items-center justify-between pb-10">
+            <div className="absolute inset-0 -z-10 opacity-70 pointer-events-none">
+                <HeroScene />
+            </div>
+
             <motion.div
                 initial="hidden"
                 animate="visible"
@@ -51,17 +59,18 @@ export default function HeroSection() {
                     Available for work
                 </motion.div>
 
-                <h1 className="text-4xl lg:text-7xl font-bold tracking-tight">
+                <h1 className="font-heading text-5xl lg:text-8xl font-bold tracking-tight">
                     <motion.div variants={child}>Building digital</motion.div>
-                    <motion.div variants={child} className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">
+                    <motion.div variants={child} className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-lime-200">
                         experiences
                     </motion.div>
                     <motion.div variants={child}>that matter.</motion.div>
                 </h1>
 
                 <motion.p variants={child} className="md:w-3/4 text-lg text-muted-foreground mx-auto lg:mx-0 leading-relaxed">
-                    I&apos;m a <strong>Software Technologies student</strong> and <strong>Junior Full Stack Developer</strong> with ~2 years of experience.
-                    I build secure, scalable web applications with a focus on architecture, fueled by <strong>music</strong> and creativity.
+                    I&apos;m a <strong>Software Technologies student</strong> and <strong>Junior Full Stack Developer</strong> with ~2 years of experience
+                    building <strong>distributed backend systems</strong> — REST APIs, Kubernetes-orchestrated services, and Elasticsearch-powered search —
+                    with a <strong>security-first</strong> mindset, fueled by music and creativity.
                 </motion.p>
 
                 <motion.div
@@ -105,10 +114,12 @@ export default function HeroSection() {
                 className="relative flex-1 flex justify-center lg:justify-end"
             >
                 <div className="relative w-full max-w-[500px] h-[350px] md:h-[450px]">
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-purple-500 rounded-full blur-3xl opacity-20 animate-pulse" />
-                    <div className="relative w-full h-full rounded-2xl overflow-hidden border border-border/50 shadow-2xl bg-card/10 backdrop-blur-sm">
-                        <CodeEditorMock />
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-lime-300 rounded-full blur-3xl opacity-20 animate-pulse" />
+                    <Tilt className="relative w-full h-full" intensity={8}>
+                        <div className="relative w-full h-full rounded-2xl overflow-hidden border border-border/50 shadow-2xl bg-card/10 backdrop-blur-sm">
+                            <CodeEditorMock />
+                        </div>
+                    </Tilt>
                 </div>
             </motion.div>
         </div>

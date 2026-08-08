@@ -18,6 +18,7 @@ interface Skill {
     icon: IconType;
     category: Category[];
     description: string;
+    featured?: boolean;
 }
 
 export default function Skills() {
@@ -25,7 +26,7 @@ export default function Skills() {
 
     const skills: Skill[] = [
         // Frontend
-        { title: "React", icon: FaReact, category: ["Frontend"], description: "Component-based UI architecture" },
+        { title: "React", icon: FaReact, category: ["Frontend"], description: "Component-based UI architecture", featured: true },
         { title: "Next.js", icon: TbBrandNextjs, category: ["Frontend", "Backend"], description: "App Router, SSR, Server Actions" },
         { title: "TypeScript", icon: SiTypescript, category: ["Frontend", "Backend"], description: "Type-safe scalability" },
         { title: "Tailwind CSS", icon: SiTailwindcss, category: ["Frontend"], description: "Rapid styling framework" },
@@ -36,20 +37,20 @@ export default function Skills() {
         { title: "CSS3", icon: TbBrandCss3, category: ["Frontend"], description: "Modern layouts & animations" },
 
         // Backend
-        { title: "Laravel", icon: FaLaravel, category: ["Backend"], description: "PHP Framework for Artisans" },
+        { title: "Laravel", icon: FaLaravel, category: ["Backend"], description: "PHP Framework for Artisans", featured: true },
         { title: "PHP", icon: SiPhp, category: ["Backend"], description: "Server-side scripting" },
         { title: "Java", icon: LiaJava, category: ["Backend"], description: "Enterprise OOP backend" },
         { title: "Python", icon: TbBrandPython, category: ["Backend", "Data/Tools"], description: "Automation & scripting" },
 
         // Data / Tools
         { title: "MySQL", icon: TbBrandMysql, category: ["Backend", "Data/Tools"], description: "Relational database management" },
-        { title: "PostgreSQL", icon: SiPostgresql, category: ["Backend", "Data/Tools"], description: "Advanced open source database" },
+        { title: "PostgreSQL", icon: SiPostgresql, category: ["Backend", "Data/Tools"], description: "Advanced open source database", featured: true },
         { title: "Firebase", icon: TbBrandFirebase, category: ["Backend", "Data/Tools"], description: "Real-time NoSQL cloud DB" },
         { title: "Elasticsearch", icon: SiElastic, category: ["Data/Tools"], description: "Search & analytics engine" },
         { title: "Git", icon: SiGit, category: ["Data/Tools", "DevOps"], description: "Version control system" },
 
         // DevOps
-        { title: "Docker", icon: FaDocker, category: ["DevOps"], description: "Containerization & deployment" },
+        { title: "Docker", icon: FaDocker, category: ["DevOps"], description: "Containerization & deployment", featured: true },
         { title: "Linux", icon: SiLinux, category: ["DevOps"], description: "Server administration" },
     ];
 
@@ -85,7 +86,7 @@ export default function Skills() {
             {/* Skills Grid */}
             <motion.div
                 layout
-                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 [grid-auto-flow:dense]"
             >
                 <AnimatePresence mode="popLayout">
                     {filteredSkills.map((skill) => (
@@ -107,22 +108,30 @@ function SkillCard({ skill }: { skill: Skill }) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="group relative h-full"
+            className={cn("group relative h-full", skill.featured && "col-span-2")}
         >
-            <div className="relative h-full p-6 rounded-2xl bg-card/60 hover:bg-card/80 border border-border/50 hover:border-primary/50 transition-all duration-300 backdrop-blur-sm overflow-hidden flex flex-col items-center text-center gap-4 hover:shadow-xl hover:shadow-primary/5 group-hover:-translate-y-1">
+            <div className={cn(
+                "relative h-full p-6 rounded-2xl bg-card/60 hover:bg-card/80 border border-border/50 hover:border-primary/50 transition-all duration-300 backdrop-blur-sm overflow-hidden flex flex-col items-center text-center gap-4 hover:shadow-xl hover:shadow-primary/5 group-hover:-translate-y-1",
+                skill.featured && "sm:flex-row sm:text-left sm:items-center bg-card/80 border-primary/30"
+            )}>
 
                 {/* Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 {/* Icon */}
-                <div className="relative p-3 rounded-xl bg-background/50 border border-border/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/20 transition-colors duration-300 ring-1 ring-transparent group-hover:ring-primary/20 shadow-sm">
-                    <Icon className="w-8 h-8" />
+                <div className={cn(
+                    "relative p-3 rounded-xl bg-background/50 border border-border/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/20 transition-colors duration-300 ring-1 ring-transparent group-hover:ring-primary/20 shadow-sm",
+                    skill.featured && "p-4 shrink-0"
+                )}>
+                    <Icon className={cn("w-8 h-8", skill.featured && "w-10 h-10")} />
                 </div>
 
                 {/* Content */}
                 <div className="space-y-1 relative z-10">
-                    <h3 className="font-semibold text-foreground tracking-tight">{skill.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2 px-2">
+                    <h3 className={cn("font-heading font-semibold text-foreground tracking-tight", skill.featured && "text-lg")}>
+                        {skill.title}
+                    </h3>
+                    <p className={cn("text-xs text-muted-foreground leading-relaxed px-2", skill.featured ? "sm:px-0" : "line-clamp-2")}>
                         {skill.description}
                     </p>
                 </div>

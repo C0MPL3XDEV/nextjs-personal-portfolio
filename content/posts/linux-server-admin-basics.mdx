@@ -1,0 +1,31 @@
+---
+title: "Linux Server Administration Basics for a Self-Hosted Portfolio"
+date: "2026-07-01"
+excerpt: "You don't need to be a sysadmin to self-host reliably — just a small, repeatable checklist that covers the ways side projects actually go down."
+tags: ["Linux", "DevOps"]
+---
+
+Self-hosting anything, even a small side project, means owning the parts a platform like Vercel normally hides from you. A short checklist that's saved me more than once.
+
+## Unattended security updates, always
+
+A box that only gets patched when I remember to SSH in is a box that stays unpatched for months. `unattended-upgrades` on Debian/Ubuntu handles the routine security patching without needing a cron job I'll eventually forget about:
+
+```bash
+sudo apt install unattended-upgrades
+sudo dpkg-reconfigure --priority=low unattended-upgrades
+```
+
+## A firewall with an explicit allow-list, not a hope
+
+`ufw` with a default-deny policy and explicit rules for exactly the ports in use (SSH, HTTP/S, and nothing else) turns "what's actually exposed on this box" from a guess into a one-command answer: `ufw status verbose`.
+
+## Log rotation before you need it
+
+A runaway log file filling the disk is one of the most avoidable ways a small server goes down, and it's invisible until it isn't. `logrotate` configured up front costs five minutes and prevents a 2am problem.
+
+## Systemd units over "just run it in a screen session"
+
+Anything long-running gets a proper systemd unit with `Restart=on-failure` — a process that silently dies in a detached terminal session is a process nobody notices is dead until a user reports it.
+
+None of this is advanced Linux administration. It's the boring 20% that prevents 80% of the incidents on a small, self-managed box.

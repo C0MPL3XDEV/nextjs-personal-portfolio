@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "C0MPL3XDEV",
     title: "Full Stack Developer",
-    description: "Software Technologies student and Junior Full Stack Developer with 2 years of experience. Passionate about web development, cybersecurity, and software architecture.",
+    description: "Software Technologies student and Junior Full Stack Developer with 2 years of experience building distributed backend systems, REST APIs, and secure, scalable web applications. Passionate about software architecture, Kubernetes, and cybersecurity.",
     url: "https://carminedev.it/",
     email: "complexdev3@gmail.com",
     links: {
@@ -15,10 +15,11 @@ export const siteConfig = {
     },
     navItems: [
         { label: "Home", href: "/" },
-        { label: "Skills", href: "#skills" },
-        { label: "Experience", href: "#experience" },
-        { label: "Projects", href: "#projects" },
-        { label: "Contact", href: "#contact" },
+        { label: "Skills", href: "/#skills" },
+        { label: "Experience", href: "/#experience" },
+        { label: "Projects", href: "/#projects" },
+        { label: "Blog", href: "/blog" },
+        { label: "Contact", href: "/#contact" },
     ]
 }
 

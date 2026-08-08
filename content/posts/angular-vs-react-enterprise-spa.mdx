@@ -1,0 +1,31 @@
+---
+title: "Angular vs React: What I Learned Building an Enterprise Admin UI"
+date: "2025-09-05"
+excerpt: "Building a role-based admin panel on Angular after years of React taught me that the 'batteries included' framework tradeoff is real — in both directions."
+tags: ["Angular", "React", "Frontend"]
+---
+
+The admin UI for Z-Laser — the internal tool we use to manage and monitor Zimbra mail infrastructure — is built in Angular, not React. Here's what that choice actually felt like in practice.
+
+## Structure is enforced, not chosen
+
+Angular's module/service/component split means every developer on the team ends up with roughly the same file organization without a style guide enforcing it. In React, that consistency has to be built and maintained deliberately — usually worth it, but it's work Angular does for free.
+
+## Dependency injection makes role-based access clean
+
+Guards and interceptors give you a single, testable place to enforce role-based access control on routes and HTTP calls:
+
+```ts
+@Injectable({ providedIn: 'root' })
+export class AdminGuard implements CanActivate {
+    canActivate(): boolean {
+        return this.auth.hasRole('admin');
+    }
+}
+```
+
+Doing the equivalent in React means composing your own HOC or hook convention — not hard, but it's a decision every team makes slightly differently.
+
+## What I missed from React
+
+Angular's change detection and RxJS observables are powerful but have a real learning curve, and debugging an unexpected re-render is less intuitive than in React's more explicit model. For a small, high-velocity team, I'd still reach for React first. For a larger team where consistency matters more than flexibility, Angular's opinions stop being a constraint and start being a feature.

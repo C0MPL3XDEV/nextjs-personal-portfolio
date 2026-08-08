@@ -1,0 +1,34 @@
+---
+title: "Designing Elasticsearch Indices for Fast, Relevant Search"
+date: "2025-10-02"
+excerpt: "Elasticsearch is easy to get running and easy to get wrong. Notes on index design after building cross-domain search over mailboxes and servers."
+tags: ["Elasticsearch", "Backend", "Data"]
+---
+
+Dropping a JSON document into Elasticsearch and letting it dynamically map fields works right up until search results stop making sense. A few decisions worth making upfront.
+
+## Map explicitly, don't let it guess
+
+Dynamic mapping is convenient for a prototype and a liability in production — a field that should be a `keyword` (exact match, used for filtering) getting inferred as `text` (tokenized, used for full-text search) silently breaks filters:
+
+```json
+{
+  "mappings": {
+    "properties": {
+      "domain": { "type": "keyword" },
+      "mailbox_size_mb": { "type": "integer" },
+      "subject": { "type": "text" }
+    }
+  }
+}
+```
+
+## Searching across domains, mailboxes, and servers means one index isn't enough
+
+Cross-entity search either means one wide index with a `type` field to disambiguate, or an alias spanning multiple indices searched together. We went with the alias approach — it keeps each entity's mapping clean and lets us reindex one entity type without touching the others.
+
+## Relevance tuning is a feedback loop, not a setting
+
+`function_score` and boosting specific fields (mailbox name over description, say) only get tuned right by watching what people actually search for and iterating — not by guessing upfront what "relevant" means for your users.
+
+The unglamorous truth: most Elasticsearch problems in production are mapping problems that got baked in early and became expensive to unwind.

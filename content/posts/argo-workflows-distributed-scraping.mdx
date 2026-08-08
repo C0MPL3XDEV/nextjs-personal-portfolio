@@ -1,0 +1,36 @@
+---
+title: "Argo Workflows for Distributed Scraping and Load Balancing"
+date: "2025-10-28"
+excerpt: "Cron jobs stop scaling the moment your scraping workload needs to be distributed and retried intelligently. Argo Workflows on Kubernetes is what replaced ours."
+tags: ["Kubernetes", "Argo", "DevOps"]
+---
+
+A single cron job scraping data from dozens of mail servers works fine until one server is slow and blocks everything behind it. That's roughly the problem Argo Workflows solved for us.
+
+## DAGs instead of a linear script
+
+Argo lets you express the scraping job as a DAG — fan out per-server scrape tasks in parallel, then fan back in to an aggregation step — instead of a script that processes servers one at a time:
+
+```yaml
+- name: scrape-all
+  dag:
+    tasks:
+      - name: scrape-server
+        template: scrape
+        arguments:
+          parameters: [{ name: server, value: "{{item}}" }]
+        withParam: "{{workflow.parameters.servers}}"
+      - name: aggregate
+        template: aggregate
+        dependencies: [scrape-server]
+```
+
+## Retries become configuration, not code
+
+Per-task retry policies (backoff, max attempts) live in the workflow spec rather than scattered `try/catch` blocks across a scraping script. One slow or flaky server retries on its own without holding up the others.
+
+## Load balancing is a side effect of the scheduler
+
+Because each scrape task is just a Kubernetes pod, the cluster's own scheduler spreads the load across nodes — we didn't have to build any load-balancing logic ourselves, just size the resource requests correctly.
+
+The real win wasn't speed, it was isolation: one bad server used to be able to take down the whole nightly scrape. Now it's a single retried task.

@@ -1,11 +1,69 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { CommandPalette } from "@/components/command-palette";
+import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/lib/site-config";
+import { getAllPosts } from "@/lib/blog";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.name,
+  jobTitle: siteConfig.title,
+  url: siteConfig.url,
+  image: `${siteConfig.url}logo.png`,
+  email: `mailto:${siteConfig.email}`,
+  description: siteConfig.description,
+  sameAs: [
+    siteConfig.links.github,
+    siteConfig.links.linkedin,
+    siteConfig.links.instagram,
+    siteConfig.links.x,
+  ],
+  worksFor: {
+    "@type": "Organization",
+    name: "Wordpower S.r.l.",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "University of Molise (UniMol)",
+  },
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "Laravel",
+    "PHP",
+    "Angular",
+    "Vue.js",
+    "Java",
+    "Python",
+    "Docker",
+    "Kubernetes",
+    "Distributed Systems",
+    "PostgreSQL",
+    "MySQL",
+    "Elasticsearch",
+    "Git",
+    "Linux",
+    "Cybersecurity",
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteConfig.name,
+  url: siteConfig.url,
+};
+
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-heading" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -40,12 +98,19 @@ export const metadata: Metadata = {
 
   keywords: [
     "Full Stack Developer",
+    "Backend Developer",
     "Next.js",
     "React",
+    "TypeScript",
     "Tailwind CSS",
     "Portfolio",
     "Laravel",
     "Angular",
+    "Docker",
+    "Kubernetes",
+    "Distributed Systems",
+    "System Design",
+    "PostgreSQL",
     "Cybersecurity",
     "CarmineDev",
     "carmine.developer",
@@ -55,6 +120,9 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical: "/",
+    types: {
+      "application/rss+xml": `${siteConfig.url}blog/rss.xml`,
+    },
   },
 
   robots: {
@@ -99,16 +167,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const posts = getAllPosts().map((post) => ({ title: post.title, slug: post.slug }));
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-sans antialiased", inter.variable)}>
+      <body className={cn("min-h-screen bg-background font-sans antialiased", dmSans.variable, spaceGrotesk.variable)}>
+        <JsonLd data={personSchema} />
+        <JsonLd data={websiteSchema} />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollProgress />
           {children}
+          <CommandPalette posts={posts} />
         </ThemeProvider>
       </body>
     </html>

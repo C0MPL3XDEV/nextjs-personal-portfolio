@@ -1,0 +1,28 @@
+---
+title: "Docker and Kubernetes Are Worth Learning on Side Projects First"
+date: "2026-03-20"
+excerpt: "You don't need a company cluster to understand orchestration — a weekend project and a single-node setup will teach you most of what matters."
+tags: ["Docker", "Kubernetes", "DevOps"]
+---
+
+The first time I touched Kubernetes was at work, on a real cluster, under real pressure. I learned faster once I stopped doing that and broke things on my own machine instead.
+
+## Start with the container, not the cluster
+
+Before orchestration, get comfortable with the unit orchestration manages. A tight, purpose-built `Dockerfile` for a small API taught me more about layers, caching, and image size than any Kubernetes concept did:
+
+```dockerfile
+FROM php:8.3-fpm-alpine
+WORKDIR /app
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --optimize-autoloader
+COPY . .
+```
+
+## Then add just enough orchestration
+
+A single-node cluster (kind, minikube, or k3s) is enough to understand Deployments, Services, and rolling updates — the concepts that transfer directly to a real multi-node setup later. You don't need HA etcd to learn what a readiness probe is for.
+
+## What actually carries over
+
+When I later worked with Argo Workflows and multi-node clusters professionally, the mental model was already there. The scale was new; the primitives were not. That's the part worth building on a side project, on your own time, before it's also on the clock.

@@ -65,6 +65,10 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
+      },
       keyframes: {
         "move-up": {
           from:{
@@ -104,6 +108,7 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
     addVariablesForColors,
     function ({ matchUtilities, theme }: any) {
       matchUtilities(

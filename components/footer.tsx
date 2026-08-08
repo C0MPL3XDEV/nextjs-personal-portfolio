@@ -40,7 +40,7 @@ export function Footer() {
                     {/* Column 1: Brand */}
                     <div className="space-y-4">
                         <div className="flex items-center gap-2">
-                            <h2 className="text-2xl font-bold tracking-tight">{siteConfig.name}</h2>
+                            <h2 className="font-heading text-2xl font-bold tracking-tight">{siteConfig.name}</h2>
                             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                         </div>
                         <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
@@ -87,7 +87,7 @@ export function Footer() {
                             })}
                         </div>
                         <Link
-                            href="#contact"
+                            href="/#contact"
                             className="mt-4 px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-colors w-fit text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ring-offset-2 ring-offset-background"
                         >
                             Contact Me
