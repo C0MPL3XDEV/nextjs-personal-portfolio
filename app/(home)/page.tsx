@@ -6,7 +6,11 @@ import Skills from "@/app/(home)/components/Skills";
 import { Experience } from "@/components/experience";
 import { Projects } from "@/components/projects";
 import GithubActivity from "@/app/(home)/components/GithubActivity";
+import Playground from "@/app/(home)/components/Playground";
+import NowSection from "@/app/(home)/components/NowSection";
 import LatestWriting from "@/app/(home)/components/LatestWriting";
+import FAQ from "@/app/(home)/components/FAQ";
+import AvailabilityBanner from "@/app/(home)/components/AvailabilityBanner";
 import { ContactForm } from "@/components/contact-form";
 import { Footer } from "@/components/footer";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -38,8 +42,24 @@ export default function page() {
                 <GithubActivity />
             </Section>
 
+            <Section id="playground" className="pb-32">
+                <Playground />
+            </Section>
+
+            <Section id="now" className="pb-32">
+                <NowSection />
+            </Section>
+
             <Section id="blog" className="pb-32">
                 <LatestWriting />
+            </Section>
+
+            <Section id="faq" className="pb-32">
+                <FAQ />
+            </Section>
+
+            <Section id="availability" className="pb-10">
+                <AvailabilityBanner />
             </Section>
 
             <Section id="contact" className="pt-10 pb-20">

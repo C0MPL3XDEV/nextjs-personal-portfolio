@@ -12,6 +12,14 @@ interface CommandItem {
     href: string;
 }
 
+// Secondary sections reachable by scroll but deliberately left out of the visible
+// pill nav to avoid crowding it — still worth surfacing here for power users.
+const SECTION_SHORTCUTS: CommandItem[] = [
+    { label: "Playground", href: "/#playground", hint: "Section" },
+    { label: "Now", href: "/#now", hint: "Section" },
+    { label: "FAQ", href: "/#faq", hint: "Section" },
+];
+
 export function CommandPalette({ posts }: { posts: { title: string; slug: string }[] }) {
     const [open, setOpen] = useState(false);
     const [query, setQuery] = useState("");
@@ -29,7 +37,7 @@ export function CommandPalette({ posts }: { posts: { title: string; slug: string
             href: `/blog/${post.slug}`,
             hint: "Blog post",
         }));
-        return [...navItems, ...postItems];
+        return [...navItems, ...SECTION_SHORTCUTS, ...postItems];
     }, [posts]);
 
     const filtered = useMemo(() => {

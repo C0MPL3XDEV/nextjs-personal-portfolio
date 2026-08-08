@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -7,7 +8,9 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/ui/reveal";
 import { CodeBlock } from "@/components/mdx/code-block";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { siteConfig } from "@/lib/site-config";
 
 const mdxComponents = {
     pre: CodeBlock,
@@ -17,16 +20,34 @@ export function generateStaticParams() {
     return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
     const post = getPostBySlug(params.slug);
 
     if (!post) {
         return {};
     }
 
+    const url = `/blog/${post.slug}`;
+
     return {
         title: post.title,
         description: post.excerpt,
+        alternates: {
+            canonical: url,
+        },
+        openGraph: {
+            type: "article",
+            title: post.title,
+            description: post.excerpt,
+            url,
+            publishedTime: post.date,
+            tags: post.tags,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: post.title,
+            description: post.excerpt,
+        },
     };
 }
 
@@ -37,8 +58,33 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         notFound();
     }
 
+    const postUrl = `${siteConfig.url}blog/${post.slug}`;
+
+    const blogPostingSchema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.excerpt,
+        datePublished: post.date,
+        dateModified: post.date,
+        url: postUrl,
+        mainEntityOfPage: postUrl,
+        keywords: post.tags.join(", "),
+        author: {
+            "@type": "Person",
+            name: siteConfig.name,
+            url: siteConfig.url,
+        },
+        publisher: {
+            "@type": "Person",
+            name: siteConfig.name,
+        },
+    };
+
     return (
         <div className="min-h-screen bg-background overflow-hidden selection:bg-primary selection:text-primary-foreground">
+            <JsonLd data={blogPostingSchema} />
+
             <div className="dark:bg-grid-white/[0.05] bg-grid-black/[0.02] relative pb-20">
                 <Navbar />
 
