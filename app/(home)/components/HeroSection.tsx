@@ -68,8 +68,9 @@ export default function HeroSection() {
                 </h1>
 
                 <motion.p variants={child} className="md:w-3/4 text-lg text-muted-foreground mx-auto lg:mx-0 leading-relaxed">
-                    I&apos;m a <strong>Software Technologies student</strong> and <strong>Junior Full Stack Developer</strong> with ~2 years of experience.
-                    I build secure, scalable web applications with a focus on architecture, fueled by <strong>music</strong> and creativity.
+                    I&apos;m a <strong>Software Technologies student</strong> and <strong>Junior Full Stack Developer</strong> with ~2 years of experience
+                    building <strong>distributed backend systems</strong> — REST APIs, Kubernetes-orchestrated services, and Elasticsearch-powered search —
+                    with a <strong>security-first</strong> mindset, fueled by music and creativity.
                 </motion.p>
 
                 <motion.div
